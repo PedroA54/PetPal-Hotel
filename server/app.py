@@ -71,6 +71,7 @@ class UpdateUser(Resource):
         if "password" in data:
             user.password_hash = data["password"]
         db.session.commit()
+        return {"message": "User updated successfully"}, 200
 
 
 # ********
@@ -107,3 +108,5 @@ def not_found(error):
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)
+
+    
