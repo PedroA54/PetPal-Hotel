@@ -1,10 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy_serializer import SerializerMixin
+from flask_bcrypt import Bcrypt
 
 db = SQLAlchemy()
-
-
-db = SQLAlchemy()
+bcrypt = Bcrypt()
 
 # Models go here!
 class Customer(db.Model, SerializerMixin):
@@ -14,23 +15,20 @@ class Customer(db.Model, SerializerMixin):
     _password_hash = db.Column(db.String(128), nullable=False)
 
     # Relationships
-    bookings = db.relationship("Booking", back_populates="customer")
-    packages = db.relationship("Package", back_populates="customer")
-
-
+    animals = db.relationship("Animal", back_populates="customer")
+    bookings = association_proxy('animals', 'bookings')
 
     @hybrid_property
     def password_hash(self):
-        raise AttributeError("Passwords cannot be inspected after being setup!")
+        raise AttributeError('password is not readable')
 
     @password_hash.setter
-    def password_hash(self, new_password):
-        hashed_password = generate_password_hash(new_password).decode("utf-8")
-        self._password_hash = hashed_password
+    def password_hash(self, password):
+        self._password_hash = bcrypt.generate_password_hash(password).decode("utf-8")
 
-    def authenticate(self, password_to_check):
-        return check_password_hash(self._password_hash, password_to_check)
-      
+    def authenticate(self, password):
+        return bcrypt.check_password_hash(self._password_hash, password)
+        
 class Animal(db.Model, SerializerMixin):
     __tablename__ = "animals"
     id = db.Column(db.Integer, primary_key=True)
@@ -40,29 +38,29 @@ class Animal(db.Model, SerializerMixin):
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
     
     # Relationships
-    packages = db.relationship("Package", back_populates="animal")   
+    customer = db.relationship("Customer", back_populates="animals")
+    bookings = db.relationship("Booking", back_populates="animal")
+    packages = association_proxy('bookings', 'package')
+
 
 class Booking(db.Model,  SerializerMixin):
     __tablename__ = "booking"
     id = db.Column(db.Integer, primary_key=True)
-    customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
+    animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
+    package_id = db.Column(db.Integer, db.ForeignKey('package.id'), nullable=False)
     check_in_date = db.Column(db.Date, nullable=False)
     check_out_date = db.Column(db.Date, nullable=False)
 
     # Relationships
-    customer = db.relationship("Customer", back_populates="bookings")
-    packages = db.relationship("Package", back_populates="booking")
-
-
-class Package(db.Model,  SerializerMixin):
+    animal = db.relationship("Animal", back_populates="bookings")
+    package = db.relationship("Package", back_populates="bookings")
+class Package(db.Model, SerializerMixin):
     __tablename__ = "package"
     id = db.Column(db.Integer, primary_key=True)
-    booking_id = db.Column(db.Integer, db.ForeignKey('booking.id'), nullable=False)
-    animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
-    customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'),nullable=False)
+    name = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.String(255), nullable=False)
+    price_per_night = db.Column(db.Float, nullable=False)
 
     # Relationships
-    customer = db.relationship("Customer", back_populates="packages")
-    animal = db.relationship("Animal", back_populates="packages")
-    booking = db.relationship("Booking", back_populates="packages")
-
+    bookings = db.relationship("Booking", back_populates="package")
+    animals = association_proxy('bookings', 'animal')
