@@ -2,15 +2,12 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy_serializer import SerializerMixin
-from flask_bcrypt import Bcrypt
-
-db = SQLAlchemy()
-bcrypt = Bcrypt()
+from config import db, bcrypt
 
 
 # Models go here!
 class Customer(db.Model, SerializerMixin):
-    __tablename__ = "customer"
+    __tablename__ = "customers"
     id = db.Column(db.Integer, primary_key=True)
     userName = db.Column(db.String(100), nullable=False)
     _password_hash = db.Column(db.String(128), nullable=False)
@@ -44,7 +41,7 @@ class Animal(db.Model, SerializerMixin):
     species = db.Column(db.String(100), nullable=False)
     age = db.Column(db.Integer, nullable=False)
     customer_id = db.Column(
-        db.Integer, db.ForeignKey("customer.id", ondelete="CASCADE"), nullable=False
+        db.Integer, db.ForeignKey("customers.id", ondelete="CASCADE"), nullable=False
     )
 
     # Relationships
@@ -60,13 +57,13 @@ def __repr__(self):
 
 
 class Booking(db.Model, SerializerMixin):
-    __tablename__ = "booking"
+    __tablename__ = "bookings"
     id = db.Column(db.Integer, primary_key=True)
     animal_id = db.Column(
-        db.Integer, db.ForeignKey("animal.id", ondelete="CASCADE"), nullable=False
+        db.Integer, db.ForeignKey("animals.id", ondelete="CASCADE"), nullable=False
     )
     package_id = db.Column(
-        db.Integer, db.ForeignKey("package.id", ondelete="CASCADE"), nullable=False
+        db.Integer, db.ForeignKey("packages.id", ondelete="CASCADE"), nullable=False
     )
     check_in_date = db.Column(db.Date, nullable=False)
     check_out_date = db.Column(db.Date, nullable=False)
@@ -75,13 +72,15 @@ class Booking(db.Model, SerializerMixin):
     animal = db.relationship("Animal", back_populates="bookings")
     package = db.relationship("Package", back_populates="bookings")
 
+    serialize_rules = ("-animal.bookings", "-package.bookings")
+
 
 def __repr__(self):
     return f"Booking(id={self.id}, animal_id={self.animal_id}, package_id={self.package_id}, check_in_date='{self.check_in_date}', check_out_date='{self.check_out_date}')"
 
 
 class Package(db.Model, SerializerMixin):
-    __tablename__ = "package"
+    __tablename__ = "packages"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(255), nullable=False)
@@ -90,6 +89,8 @@ class Package(db.Model, SerializerMixin):
     # Relationships
     bookings = db.relationship("Booking", back_populates="package")
     animals = association_proxy("bookings", "animal")
+
+    serialize_rules = ("-bookings.package",)
 
 
 def __repr__(self):
