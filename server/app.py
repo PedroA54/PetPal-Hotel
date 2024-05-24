@@ -21,6 +21,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///pet_hotel.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SECRET_KEY"] = "supersecretkey"
 
+
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 api = Api(app)
