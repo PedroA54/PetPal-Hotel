@@ -1,8 +1,8 @@
-"""initial migration
+"""create tables
 
-Revision ID: 4836fb1e98e5
+Revision ID: d82dbb965f9a
 Revises: 
-Create Date: 2024-05-24 12:09:58.612356
+Create Date: 2024-05-24 16:27:30.235836
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4836fb1e98e5'
+revision = 'd82dbb965f9a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -42,9 +42,9 @@ def upgrade():
     )
     op.create_table('bookings',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('check_in_date', sa.Date(), nullable=False),
     sa.Column('animal_id', sa.Integer(), nullable=False),
     sa.Column('package_id', sa.Integer(), nullable=False),
-    sa.Column('check_in_date', sa.Date(), nullable=False),
     sa.Column('check_out_date', sa.Date(), nullable=False),
     sa.ForeignKeyConstraint(['animal_id'], ['animals.id'], name=op.f('fk_bookings_animal_id_animals'), ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['package_id'], ['packages.id'], name=op.f('fk_bookings_package_id_packages'), ondelete='CASCADE'),

@@ -2,6 +2,8 @@
 
 # Standard library imports
 
+from datetime import datetime
+
 # Local imports
 from config import api, app, db
 
@@ -77,11 +79,104 @@ class UpdateUser(Resource):
 # ********
 # Animal
 # ********
+class AnimalList(Resource):
+    def get(self):
+        animals = Animal.query.all()
+        return [animal.to_dict() for animal in animals], 200
+
+    def post(self):
+        if request.is_json:
+            data = request.get_json()
+            new_animal = Animal(
+                name=data["name"],
+                species=data["species"],
+                age=data["age"],
+                customer_id=data["customer_id"],
+            )
+            db.session.add(new_animal)
+            db.session.commit()
+            return new_animal.to_dict(), 201
+        return {"error": "Request must be JSON"}, 400
+
+
+class AnimalDetail(Resource):
+    def get(self, animal_id):
+        animal = Animal.query.get_or_404(animal_id)
+        return animal.to_dict(), 200
+
+    def delete(self, animal_id):
+        animal = Animal.query.get_or_404(animal_id)
+        db.session.delete(animal)
+        db.session.commit()
+        return "", 204
+
+    def patch(self, animal_id):
+        if request.is_json:
+            data = request.get_json()
+            animal = Animal.query.get_or_404(animal_id)
+            animal.name = data.get("name", animal.name)
+            animal.species = data.get("species", animal.species)
+            animal.age = data.get("age", animal.age)
+            db.session.commit()
+            return animal.to_dict(), 200
+        return {"error": "Request must be JSON"}, 400
 
 
 # ********
 # Booking
 # ********
+class BookingList(Resource):
+    def get(self):
+        bookings = Booking.query.all()
+        return [booking.to_dict() for booking in bookings], 200
+
+    def post(self):
+        data = request.get_json()
+
+        try:
+            booking = Booking(
+                check_in_date=datetime.strptime(
+                    data.get("check_in_date"), "%Y-%m-%d"
+                ).date(),
+                animal_id=data["animal_id"],
+                package_id=data["package_id"],
+                check_out_date=datetime.strptime(
+                    data.get("check_in_date"), "%Y-%m-%d"
+                ).date(),
+            )
+
+            db.session.add(booking)
+            db.session.commit()
+            return booking.to_dict(), 201
+        except Exception as e:
+            return {"error": str(e)}, 400
+
+
+class BookingDetail(Resource):
+    def get(self, id):
+        booking = Booking.query.get_or_404(id)
+        return booking.to_dict(), 200
+
+    def patch(self, id):
+        booking = Booking.query.get_or_404(id)
+        data = request.get_json()
+        for field in ["animal_id", "package_id"]:
+            if field in data:
+                setattr(booking, field, data[field])
+
+        for field in ["check_in_date", "check_out_date"]:
+            if field in data:
+                setattr(
+                    booking, field, datetime.strptime(data[field], "%Y-%m-%d").date()
+                )
+        db.session.commit()
+        return booking.to_dict(), 200
+
+    def delete(self, id):
+        booking = Booking.query.get_or_404(id)
+        db.session.delete(booking)
+        db.session.commit()
+        return "", 204
 
 
 # ********
@@ -98,6 +193,10 @@ api.add_resource(SignUp, "/signup")
 api.add_resource(LogIn, "/login")
 api.add_resource(LogOut, "/logout")
 api.add_resource(UpdateUser, "/users/<int:id>")
+api.add_resource(AnimalList, "/animals")
+api.add_resource(AnimalDetail, "/animals/<int:animal_id>")
+api.add_resource(BookingList, "/bookings")
+api.add_resource(BookingDetail, "/bookings/<int:id>")
 api.add_resource(PackageList, "/packages")
 
 
@@ -108,5 +207,3 @@ def not_found(error):
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)
-
-    
