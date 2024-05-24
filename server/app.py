@@ -2,19 +2,29 @@
 
 # Standard library imports
 
+# Local imports
+from config import api, app, db
+
 # Remote library imports
-from flask import Flask, request, session, jsonify
+from flask import Flask, jsonify, request, session
+from flask_bcrypt import Bcrypt
+from flask_migrate import Migrate
+from flask_restful import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy_serializer import SerializerMixin
-from flask_bcrypt import Bcrypt
-from flask_restful import Api, Resource
-from flask_migrate import Migrate
-from sqlalchemy.exc import IntegrityError
 
-# Local imports
-from config import app, db, api
+app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///pet_hotel.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SECRET_KEY"] = "supersecretkey"
+
+db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
+api = Api(app)
+migrate = Migrate(app, db)
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///pet_hotel.db"
@@ -28,7 +38,7 @@ api = Api(app)
 migrate = Migrate(app, db)
 
 # Add your model imports
-from models import Customer, Animal, Booking, Package
+from models import Animal, Booking, Customer, Package
 
 
 @app.route("/")

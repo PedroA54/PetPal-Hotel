@@ -18,6 +18,8 @@ class Customer(db.Model, SerializerMixin):
 
     serialize_rules = ("-animals.customer", "-_password_hash")
 
+    serialize_rules = ("-animals.customer", "-_password_hash")
+
     @hybrid_property
     def password_hash(self):
         raise AttributeError("password is not readable")
@@ -28,21 +30,18 @@ class Customer(db.Model, SerializerMixin):
 
     def authenticate(self, password):
         return bcrypt.check_password_hash(self._password_hash, password)
-
+    
 
 def __repr__(self):
     return f"Customer(id={self.id}, userName='{self.userName}')"
-
-
+        
 class Animal(db.Model, SerializerMixin):
     __tablename__ = "animals"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     species = db.Column(db.String(100), nullable=False)
     age = db.Column(db.Integer, nullable=False)
-    customer_id = db.Column(
-        db.Integer, db.ForeignKey("customers.id", ondelete="CASCADE"), nullable=False
-    )
+    customer_id = db.Column(db.Integer, db.ForeignKey('customer.id', ondelete="CASCADE"), nullable=False)
 
     # Relationships
     customer = db.relationship("Customer", back_populates="animals")
@@ -51,20 +50,17 @@ class Animal(db.Model, SerializerMixin):
 
     serialize_rules = ("-customer.animals",)
 
+    serialize_rules = ("-customer.animals",)
+
 
 def __repr__(self):
     return f"Animal(id={self.id}, name='{self.name}', species='{self.species}', age={self.age})"
 
-
-class Booking(db.Model, SerializerMixin):
+class Booking(db.Model,  SerializerMixin):
     __tablename__ = "bookings"
     id = db.Column(db.Integer, primary_key=True)
-    animal_id = db.Column(
-        db.Integer, db.ForeignKey("animals.id", ondelete="CASCADE"), nullable=False
-    )
-    package_id = db.Column(
-        db.Integer, db.ForeignKey("packages.id", ondelete="CASCADE"), nullable=False
-    )
+    animal_id = db.Column(db.Integer, db.ForeignKey('animal.id', ondelete="CASCADE"), nullable=False)
+    package_id = db.Column(db.Integer, db.ForeignKey('package.id', ondelete="CASCADE"), nullable=False)
     check_in_date = db.Column(db.Date, nullable=False)
     check_out_date = db.Column(db.Date, nullable=False)
 
@@ -74,10 +70,8 @@ class Booking(db.Model, SerializerMixin):
 
     serialize_rules = ("-animal.bookings", "-package.bookings")
 
-
 def __repr__(self):
     return f"Booking(id={self.id}, animal_id={self.animal_id}, package_id={self.package_id}, check_in_date='{self.check_in_date}', check_out_date='{self.check_out_date}')"
-
 
 class Package(db.Model, SerializerMixin):
     __tablename__ = "packages"
@@ -88,10 +82,10 @@ class Package(db.Model, SerializerMixin):
 
     # Relationships
     bookings = db.relationship("Booking", back_populates="package")
-    animals = association_proxy("bookings", "animal")
+    animals = association_proxy('bookings', 'animal')
+
 
     serialize_rules = ("-bookings.package",)
-
 
 def __repr__(self):
     return f"Package(id={self.id}, name='{self.name}', description='{self.description}', price_per_night={self.price_per_night})"
