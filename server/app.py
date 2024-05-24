@@ -46,7 +46,7 @@ def index():
     return "<h1>Project Server</h1>"
 
 
-@app.errorhandler(NotFound)
+@app.errorhandler(404)
 def not_found(error):
     return {"error": str(error)}, 404
 
