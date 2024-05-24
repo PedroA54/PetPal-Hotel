@@ -41,8 +41,7 @@ class Animal(db.Model, SerializerMixin):
     name = db.Column(db.String(100), nullable=False)
     species = db.Column(db.String(100), nullable=False)
     age = db.Column(db.Integer, nullable=False)
-    customer_id = db.Column(db.Integer, db.ForeignKey('customer.id', ondelete="CASCADE"), nullable=False)
-
+    customer_id = db.Column(db.Integer, db.ForeignKey('customers.id', ondelete="CASCADE"), nullable=False)
     # Relationships
     customer = db.relationship("Customer", back_populates="animals")
     bookings = db.relationship("Booking", back_populates="animal")
@@ -56,12 +55,11 @@ class Animal(db.Model, SerializerMixin):
 def __repr__(self):
     return f"Animal(id={self.id}, name='{self.name}', species='{self.species}', age={self.age})"
 
-class Booking(db.Model,  SerializerMixin):
+class Booking(db.Model, SerializerMixin):
     __tablename__ = "bookings"
     id = db.Column(db.Integer, primary_key=True)
-    animal_id = db.Column(db.Integer, db.ForeignKey('animal.id', ondelete="CASCADE"), nullable=False)
-    package_id = db.Column(db.Integer, db.ForeignKey('package.id', ondelete="CASCADE"), nullable=False)
-    check_in_date = db.Column(db.Date, nullable=False)
+    animal_id = db.Column(db.Integer, db.ForeignKey('animals.id', ondelete="CASCADE"), nullable=False)
+    package_id = db.Column(db.Integer, db.ForeignKey('packages.id', ondelete="CASCADE"), nullable=False)  
     check_out_date = db.Column(db.Date, nullable=False)
 
     # Relationships
@@ -72,6 +70,7 @@ class Booking(db.Model,  SerializerMixin):
 
 def __repr__(self):
     return f"Booking(id={self.id}, animal_id={self.animal_id}, package_id={self.package_id}, check_in_date='{self.check_in_date}', check_out_date='{self.check_out_date}')"
+
 
 class Package(db.Model, SerializerMixin):
     __tablename__ = "packages"

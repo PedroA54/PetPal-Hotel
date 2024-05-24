@@ -1,14 +1,14 @@
 from random import randint, choice as rc
 
-from app_config import app, db
-from your_models import Package
+from config import app, db
+from models import Package
 
 # Remote library imports
 from faker import Faker
 
 # Local imports
 from app import app
-from server.models.models import db
+# from server.models.models import db
 
 if __name__ == "__main__":
     fake = Faker()

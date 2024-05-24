@@ -11,44 +11,18 @@ from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
+
+# Add your model imports
+from models import Animal, Booking, Customer, Package
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy_serializer import SerializerMixin
 
-app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///pet_hotel.db"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SECRET_KEY"] = "supersecretkey"
-
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-api = Api(app)
-migrate = Migrate(app, db)
-
-app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///pet_hotel.db"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SECRET_KEY"] = "supersecretkey"
-
-
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-api = Api(app)
-migrate = Migrate(app, db)
-
-# Add your model imports
-from models import Animal, Booking, Customer, Package
-
 
 @app.route("/")
 def index():
     return "<h1>Project Server</h1>"
-
-
-@app.errorhandler(404)
-def not_found(error):
-    return {"error": str(error)}, 404
 
 
 # ********
@@ -108,11 +82,10 @@ class UpdateUser(Resource):
 # Booking
 # ********
 
+
 # ********
 # Package
 # ********
-
-
 class PackageList(Resource):
     def get(self):
         packages = Package.query.all()
@@ -125,6 +98,11 @@ api.add_resource(LogIn, "/login")
 api.add_resource(LogOut, "/logout")
 api.add_resource(UpdateUser, "/users/<int:id>")
 api.add_resource(PackageList, "/packages")
+
+
+@app.errorhandler(404)
+def not_found(error):
+    return {"error": str(error)}, 404
 
 
 if __name__ == "__main__":
