@@ -30,7 +30,19 @@ migrate = Migrate(app, db)
 from models import Customer, Animal, Booking, Package
 
 
-# Views go here!
+@app.route("/")
+def index():
+    return "<h1>Project Server</h1>"
+
+
+@app.errorhandler(NotFound)
+def not_found(error):
+    return {"error": str(error)}, 404
+
+
+# ********
+# Customer
+# ********
 class SignUp(Resource):
     def post(self):
         data = request.get_json()
@@ -74,7 +86,20 @@ class UpdateUser(Resource):
         if "password" in data:
             user.password_hash = data["password"]
         db.session.commit()
-        return user.to_dict(), 200
+
+
+# ********
+# Animal
+# ********
+
+
+# ********
+# Booking
+# ********
+
+# ********
+# Package
+# ********
 
 
 class PackageList(Resource):
@@ -89,11 +114,6 @@ api.add_resource(LogIn, "/login")
 api.add_resource(LogOut, "/logout")
 api.add_resource(UpdateUser, "/users/<int:id>")
 api.add_resource(PackageList, "/packages")
-
-
-@app.route("/")
-def index():
-    return "<h1>Project Server</h1>"
 
 
 if __name__ == "__main__":
