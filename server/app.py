@@ -16,16 +16,6 @@ from sqlalchemy.exc import IntegrityError
 # Local imports
 from config import app, db, api
 
-app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///pet_hotel.db"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SECRET_KEY"] = "supersecretkey"
-
-
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-api = Api(app)
-migrate = Migrate(app, db)
 
 # Add your model imports
 from models import Customer, Animal, Booking, Package
@@ -34,11 +24,6 @@ from models import Customer, Animal, Booking, Package
 @app.route("/")
 def index():
     return "<h1>Project Server</h1>"
-
-
-@app.errorhandler(NotFound)
-def not_found(error):
-    return {"error": str(error)}, 404
 
 
 # ********
@@ -92,7 +77,6 @@ class UpdateUser(Resource):
 # ********
 # Animal
 # ********
-
 
 # ********
 # Booking

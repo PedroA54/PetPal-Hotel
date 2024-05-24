@@ -9,8 +9,11 @@ from flask_bcrypt import Bcrypt
 
 # Instantiate app, set attributes
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///pet_hotel.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+bcrypt = Bcrypt(app)
+api = Api(app)
 app.json.compact = False
 
 # Define metadata, instantiate db
@@ -23,9 +26,6 @@ db = SQLAlchemy(metadata=metadata)
 migrate = Migrate(app, db)
 db.init_app(app)
 
-bcrypt = Bcrypt(app)
-# Instantiate REST API
-api = Api(app)
 
 # Instantiate CORS
 CORS(app)
