@@ -1,5 +1,3 @@
-# Standard library imports
-
 # Remote library imports
 from flask import Flask
 from flask_cors import CORS
