@@ -10,6 +10,7 @@ from flask_restful import Resource
 from config import app, db, api
 
 # Add your model imports
+from models import Customer, Animal, Booking, Package
 
 
 # Views go here!
@@ -19,6 +20,26 @@ from config import app, db, api
 def index():
     return "<h1>Project Server</h1>"
 
+
+# ********
+# Customer
+# ********
+
+
+# ********
+# Animal
+# ********
+
+
+# ********
+# Booking
+# ********
+
+
+# ********
+# Package
+# ********
+@app.route("/booking", methods=["POST"])
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)
