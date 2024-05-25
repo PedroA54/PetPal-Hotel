@@ -84,9 +84,9 @@ class Package(db.Model, SerializerMixin):
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(255), nullable=False)
     price_per_night = db.Column(db.Float, nullable=False)
-    animal_id = db.Column(
-        db.Integer, db.ForeignKey("animals.id", ondelete="CASCADE"), nullable=False
-    )
+    # animal_id = db.Column(
+    #     db.Integer, db.ForeignKey("animals.id", ondelete="CASCADE"), nullable=False
+    # )
     # Relationships
     bookings = db.relationship("Booking", back_populates="package")
     animals = association_proxy("bookings", "animal")
