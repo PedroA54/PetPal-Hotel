@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from random import choice as rc
 from random import randint
 
@@ -9,11 +10,25 @@ from faker import Faker
 from models import Package
 
 # from server.models.models import db
+=======
+#!/usr/bin/env python3
+
+# Standard library imports
+from random import randint, choice as rc
+
+# Remote library imports
+from faker import Faker
+
+# Local imports
+from app import app
+from models import db
+>>>>>>> 0b49a78 (adds necesssary files)
 
 if __name__ == "__main__":
     fake = Faker()
     with app.app_context():
         print("Starting seed...")
+<<<<<<< HEAD
 
         # Seed code goes here!
 
@@ -40,3 +55,6 @@ if __name__ == "__main__":
             db.session.commit()
 
         seed_packages()
+=======
+        # Seed code goes here!
+>>>>>>> 0b49a78 (adds necesssary files)
