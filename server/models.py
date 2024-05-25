@@ -89,6 +89,7 @@ class Package(db.Model, SerializerMixin):
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(255), nullable=False)
     price_per_night = db.Column(db.Float, nullable=False)
+    booking_id = db.Column(db.Integer, db.ForeignKey("bookings.id", ondelete="CASCADE"))
 
     # Relationships
     bookings = db.relationship("Booking", back_populates="package")
@@ -96,6 +97,5 @@ class Package(db.Model, SerializerMixin):
 
     serialize_rules = ("-bookings.package",)
 
-
-def __repr__(self):
-    return f"Package(id={self.id}, name='{self.name}', description='{self.description}', price_per_night={self.price_per_night})"
+    def __repr__(self):
+        return f"Package(id={self.id}, name='{self.name}', description='{self.description}', price_per_night={self.price_per_night}, booking_id={self.booking_id})"
