@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 function LogOut() {
     const history = useHistory();
@@ -15,6 +16,7 @@ function LogOut() {
             history.push('/');
         } catch (error) {
             console.error('Logout failed:', error);
+            toast.error('Logout failed. Please try again later.');
         }
     };
 

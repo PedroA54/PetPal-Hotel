@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 function LogIn() {
     const [username, setUsername] = useState('');
@@ -22,6 +23,7 @@ function LogIn() {
             history.push('/home');
         } catch (error) {
             console.error('Login failed:', error);
+            toast.error('Login failed. Please check your username and password.');
         }
     };
 
