@@ -19,6 +19,7 @@ function NavBar() {
             <NavLink to="/Profile" className="nav-link">
                 Profile
             </NavLink> 
+            
         </nav>
     );
 }

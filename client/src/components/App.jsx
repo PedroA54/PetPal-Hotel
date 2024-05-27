@@ -6,6 +6,7 @@ import EntryPage from './EntryPage';
 import AppointmentPage from './AppointmentPage';
 import ProfilePage from './ProfilePage';
 import PetPage from './PetPage';
+import AddAnimal from '../components/Animals/AnimalForm';
 
 function App() {
     return (
@@ -27,6 +28,9 @@ function App() {
                     </Route>
                     <Route path="/pets">
                         <PetPage />
+                    </Route>
+                    <Route path="/add-animal">
+                        <AddAnimal />
                     </Route>
                 </Switch>
             </div>
