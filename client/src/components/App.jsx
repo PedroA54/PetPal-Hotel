@@ -7,6 +7,11 @@ import AppointmentPage from './AppointmentPage';
 import ProfilePage from './ProfilePage';
 import PetPage from './PetPage';
 import AddAnimal from '../components/Animals/AnimalForm';
+import SignUp from '../components/Customers/SignUp';
+import LogIn from '../components/Customers/LogIn';
+import LogOut from '../components/Customers/LogOut';
+
+
 
 function App() {
     return (
@@ -32,7 +37,15 @@ function App() {
                     <Route path="/add-animal">
                         <AddAnimal />
                     </Route>
+                    <Route path="/signup">
+                        <SignUp />
+                    </Route>
+                    <Route path="/login">
+                        <LogIn />
+
+                    </Route>
                 </Switch>
+                <LogOut />
             </div>
         </Router>
     );

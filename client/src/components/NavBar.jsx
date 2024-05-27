@@ -7,19 +7,23 @@ function NavBar() {
             <NavLink to="/" className="nav-link">
                 Entry
             </NavLink>
-
             <NavLink to="/home" className="nav-link">
                 Home Page
             </NavLink>
-
             <NavLink to="/appointment" className="nav-link">
                 Appointment
             </NavLink> 
-            
-            <NavLink to="/Profile" className="nav-link">
+            <NavLink to="/profile" className="nav-link">
                 Profile
             </NavLink> 
             
+            <NavLink to="/signup" className="nav-link">
+                Sign Up
+            </NavLink>
+            <NavLink to="/login" className="nav-link">
+                Log In
+            </NavLink>
+
         </nav>
     );
 }
