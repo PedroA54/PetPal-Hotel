@@ -15,13 +15,15 @@ function NavBar() {
             </NavLink> 
             <NavLink to="/profile" className="nav-link">
                 Profile
-            </NavLink>
+            </NavLink> 
+            
             <NavLink to="/signup" className="nav-link">
                 Sign Up
             </NavLink>
             <NavLink to="/login" className="nav-link">
                 Log In
             </NavLink>
+
         </nav>
     );
 }

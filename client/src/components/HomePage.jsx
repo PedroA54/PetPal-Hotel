@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import AddAnimal from '../components/Animals/AnimalForm';
 
 function HomePage() {
     return (
@@ -17,6 +18,7 @@ function HomePage() {
                 View Pets
             </NavLink>
             </nav>
+            <AddAnimal />
         </>
     );
 }
