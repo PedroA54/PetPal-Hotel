@@ -6,6 +6,9 @@ import EntryPage from './EntryPage';
 import AppointmentPage from './AppointmentPage';
 import ProfilePage from './ProfilePage';
 import PetPage from './PetPage';
+import SignUp from '../components/Customers/SignUp';
+import LogIn from '../components/Customers/LogIn';
+import LogOut from '../components/Customers/LogOut';
 
 function App() {
     return (
@@ -28,7 +31,14 @@ function App() {
                     <Route path="/pets">
                         <PetPage />
                     </Route>
+                    <Route path="/signup">
+                        <SignUp />
+                    </Route>
+                    <Route path="/login">
+                        <LogIn />
+                    </Route>
                 </Switch>
+                <LogOut />
             </div>
         </Router>
     );

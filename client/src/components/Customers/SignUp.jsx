@@ -1,0 +1,60 @@
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
+function SignUp() {
+    const [userName, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
+    const history = useHistory();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://localhost:5555/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userName, password }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.errors ? errorData.errors.join(', ') : 'Sign Up failed');
+            }
+
+            await response.json();
+            history.push('/home');
+        } catch (error) {
+            setError(error.message);
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <h2>Sign Up</h2>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <div>
+                <label>Username:</label>
+                <input 
+                    type="text" 
+                    value={userName} 
+                    onChange={(e) => setUserName(e.target.value)} 
+                    required
+                />
+            </div>
+            <div>
+                <label>Password:</label>
+                <input 
+                    type="password" 
+                    value={password} 
+                    onChange={(e) => setPassword(e.target.value)} 
+                    required
+                />
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    );
+}
+
+export default SignUp;
