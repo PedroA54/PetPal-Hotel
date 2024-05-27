@@ -15,6 +15,10 @@ function NavBar() {
             <NavLink to="/appointment" className="nav-link">
                 Appointment
             </NavLink> 
+            
+            <NavLink to="/Profile" className="nav-link">
+                Profile
+            </NavLink> 
         </nav>
     );
 }

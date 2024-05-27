@@ -4,6 +4,8 @@ import NavBar from './NavBar';
 import HomePage from './HomePage';
 import EntryPage from './EntryPage';
 import AppointmentPage from './AppointmentPage';
+import ProfilePage from './ProfilePage';
+import PetPage from './PetPage';
 
 function App() {
     return (
@@ -19,6 +21,12 @@ function App() {
                     </Route>
                     <Route path="/appointment">
                         <AppointmentPage />
+                    </Route>
+                    <Route path="/profile">
+                        <ProfilePage />
+                    </Route>
+                    <Route path="/pets">
+                        <PetPage />
                     </Route>
                 </Switch>
             </div>

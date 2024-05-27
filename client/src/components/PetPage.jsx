@@ -1,10 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function AppointmentPage() {
+function PetPage() {
     return (
         <>
-            <h1>This is the Appointment Page</h1>
+            <h1>Hello this is the pet page</h1>
+
             <nav>
             <NavLink to="/home" className="nav-link">
                 Home
@@ -14,4 +15,4 @@ function AppointmentPage() {
     );
 }
 
-export default AppointmentPage;
+export default PetPage;
