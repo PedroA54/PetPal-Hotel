@@ -10,6 +10,7 @@ import SignUp from '../components/Customers/SignUp';
 import LogIn from '../components/Customers/LogIn';
 import LogOut from '../components/Customers/LogOut';
 
+
 function App() {
     return (
         <Router>
