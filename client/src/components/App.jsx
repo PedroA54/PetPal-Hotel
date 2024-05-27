@@ -9,7 +9,7 @@ import PetPage from './PetPage';
 import AddAnimal from '../components/Animals/AnimalForm';
 import SignUp from '../components/Customers/SignUp';
 import LogIn from '../components/Customers/LogIn';
-import LogOut from '../components/Customers/LogOut';
+
 
 
 
@@ -42,10 +42,12 @@ function App() {
                     </Route>
                     <Route path="/login">
                         <LogIn />
+                        
 
                     </Route>
+                    
                 </Switch>
-                <LogOut />
+                
             </div>
         </Router>
     );

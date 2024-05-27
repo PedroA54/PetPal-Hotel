@@ -17,13 +17,6 @@ function NavBar() {
                 Profile
             </NavLink> 
             
-            <NavLink to="/signup" className="nav-link">
-                Sign Up
-            </NavLink>
-            <NavLink to="/login" className="nav-link">
-                Log In
-            </NavLink>
-
         </nav>
     );
 }
