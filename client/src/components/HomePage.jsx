@@ -5,20 +5,25 @@ import AddAnimal from '../components/Animals/AnimalForm';
 function HomePage() {
     return (
         <>
-            <h1>Hello, Welcome to PetPal Hotel</h1>
-
+            <header>
+                <h1>Hello, Welcome to PetPal Hotel</h1>
+            </header>
+            
             <nav>
-            <NavLink to="/appointment" className="nav-link">
-                Appointment
-            </NavLink>
-            <NavLink to="/profile" className="nav-link">
-                Profile
-            </NavLink>
-            <NavLink to="/pets" className="nav-link">
-                View Pets
-            </NavLink>
+                <NavLink to="/appointment" className="nav-link">
+                    Appointment
+                </NavLink>
+                <NavLink to="/profile" className="nav-link">
+                    Profile
+                </NavLink>
+                <NavLink to="/pets" className="nav-link">
+                    View Pets
+                </NavLink>
             </nav>
-            <AddAnimal />
+
+            <section>
+                <AddAnimal />
+            </section>
         </>
     );
 }

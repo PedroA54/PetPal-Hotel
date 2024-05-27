@@ -1,3 +1,4 @@
+// AnimalForm.js
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -5,7 +6,7 @@ function AddAnimal() {
     const [name, setName] = useState('');
     const [species, setSpecies] = useState('');
     const [age, setAge] = useState('');
-    const [customerId, setCustomerId] = useState(''); // If needed
+    const [customerId, setCustomerId] = useState(''); 
     const history = useHistory();
 
     const handleSubmit = async (e) => {
@@ -20,7 +21,7 @@ function AddAnimal() {
                     name: name,
                     species: species,
                     age: age,
-                    customer_id: customerId, // Include customerId if needed
+                    customer_id: customerId, 
                 }),
             });
 
