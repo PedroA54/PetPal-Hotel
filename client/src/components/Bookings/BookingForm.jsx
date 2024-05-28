@@ -11,7 +11,7 @@ function CreateBooking() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5555/bookings', {
+            const response = await fetch('/bookings', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -43,19 +43,19 @@ function CreateBooking() {
             <h2>Create Booking</h2>
             <div>
                 <label>Animal Name:</label>
-                <input 
-                    type="number" 
-                    value={animalId} 
-                    onChange={(e) => setAnimalId(e.target.value)} 
-                    required 
+                <input
+                    type="number"
+                    value={animalId}
+                    onChange={(e) => setAnimalId(e.target.value)}
+                    required
                 />
             </div>
             <div>
                 <label>Package Type:</label>
-                <select 
-                    value={packageId} 
-                    onChange={(e) => setPackageId(e.target.value)} 
-                    required 
+                <select
+                    value={packageId}
+                    onChange={(e) => setPackageId(e.target.value)}
+                    required
                 >
                     <option value="">Select Package Type</option>
                     <option value="1">Ultra Package</option>
@@ -65,20 +65,20 @@ function CreateBooking() {
             </div>
             <div>
                 <label>Check-in Date:</label>
-                <input 
-                    type="date" 
-                    value={checkInDate} 
-                    onChange={(e) => setCheckInDate(e.target.value)} 
-                    required 
+                <input
+                    type="date"
+                    value={checkInDate}
+                    onChange={(e) => setCheckInDate(e.target.value)}
+                    required
                 />
             </div>
             <div>
                 <label>Check-out Date:</label>
-                <input 
-                    type="date" 
-                    value={checkOutDate} 
-                    onChange={(e) => setCheckOutDate(e.target.value)} 
-                    required 
+                <input
+                    type="date"
+                    value={checkOutDate}
+                    onChange={(e) => setCheckOutDate(e.target.value)}
+                    required
                 />
             </div>
             <button type="submit">Create Booking</button>

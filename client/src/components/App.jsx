@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import NavBar from './NavBar';
 import HomePage from '../pages/HomePage';
@@ -10,13 +10,45 @@ import AddAnimal from '../components/Animals/AnimalForm';
 import SignUp from '../components/Customers/SignUp';
 import LogIn from '../components/Customers/LogIn';
 
-
-// Implement useState un the function
 function App() {
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        fetch('/check_session', {
+            method: 'GET',
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.id) {
+                    setUser(data);
+                }
+            })
+            .catch(error => {
+                console.error('Error checking session:', error);
+            });
+    }, []);
+
+    const handleLogin = (userData) => {
+        setUser(userData);
+    };
+
+    const handleLogout = () => {
+        fetch('/logout', {
+            method: 'DELETE',
+            credentials: 'include'
+        })
+            .then(response => {
+                if (response.ok) {
+                    setUser(null);
+                }
+            });
+    };
+
     return (
         <Router>
             <div>
-                <NavBar />
+                <NavBar user={user} onLogout={handleLogout} />
                 <Switch>
                     <Route exact path="/">
                         <EntryPage />
@@ -37,10 +69,10 @@ function App() {
                         <AddAnimal />
                     </Route>
                     <Route path="/signup">
-                        <SignUp />
+                        <SignUp onLogin={handleLogin} />
                     </Route>
                     <Route path="/login">
-                        <LogIn />
+                        <LogIn onLogin={handleLogin} user={user} />
                     </Route>
                 </Switch>
             </div>
@@ -49,3 +81,4 @@ function App() {
 }
 
 export default App;
+
