@@ -15,7 +15,7 @@ function LogIn() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ userName: username, password }),
+                body: JSON.stringify({ userName: username, password: password }),
             });
             if (!response.ok) {
                 throw new Error('Login failed');
