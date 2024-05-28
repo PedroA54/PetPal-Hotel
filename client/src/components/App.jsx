@@ -1,17 +1,14 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import NavBar from './NavBar';
-import HomePage from './HomePage';
-import EntryPage from './EntryPage';
-import AppointmentPage from './AppointmentPage';
-import ProfilePage from './ProfilePage';
-import PetPage from './PetPage';
+import HomePage from '../pages/HomePage';
+import EntryPage from '../pages/EntryPage';
+import AppointmentPage from '../pages/AppointmentPage';
+import ProfilePage from '../pages/ProfilePage';
+import PetPage from '../pages/PetPage';
 import AddAnimal from '../components/Animals/AnimalForm';
 import SignUp from '../components/Customers/SignUp';
 import LogIn from '../components/Customers/LogIn';
-
-
-
 
 function App() {
     return (
@@ -42,12 +39,8 @@ function App() {
                     </Route>
                     <Route path="/login">
                         <LogIn />
-                        
-
                     </Route>
-                    
                 </Switch>
-                
             </div>
         </Router>
     );

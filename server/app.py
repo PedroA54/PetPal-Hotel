@@ -5,9 +5,11 @@
 from datetime import datetime
 
 # Local imports
+
 from config import api, app, db
 
 # Remote library imports
+
 from flask import Flask, jsonify, request, session
 from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
