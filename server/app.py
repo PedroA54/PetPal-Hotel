@@ -5,9 +5,12 @@
 from datetime import datetime
 
 # Local imports
+
 from config import api, app, bcrypt, db
 
+
 # Remote library imports
+
 from flask import Flask, jsonify, request, session
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
@@ -193,6 +196,26 @@ class PackageList(Resource):
     def get(self):
         packages = Package.query.all()
         return [package.to_dict() for package in packages], 200
+
+    def post(self):
+        # Extract data from the request JSON
+        data = request.get_json()
+        if not data:
+            return {"message": "No input data provided"}, 400
+
+        # Create a new Package object
+        new_package = Package(
+            name=data.get("name"),
+            description=data.get("description"),
+            price_per_night=data.get("price_per_night"),
+        )
+
+        # Add the new package to the database session
+        db.session.add(new_package)
+        db.session.commit()
+
+        # Return a response indicating success
+        return {"message": "Package added successfully"}, 201
 
 
 # Adding resources to the API

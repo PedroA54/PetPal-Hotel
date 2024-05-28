@@ -20,10 +20,11 @@ function HomePage() {
                     View Pets
                 </NavLink>
             </nav>
-
+            
             <section>
                 <AddAnimal />
             </section>
+            
         </>
     );
 }
