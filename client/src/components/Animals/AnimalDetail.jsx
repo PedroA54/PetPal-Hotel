@@ -6,7 +6,7 @@ function AnimalsList() {
 
     useEffect(() => {
         // Fetch animal data from the server
-        fetch('http://localhost:5555/animals')
+        fetch('/animals')
             .then(response => response.json())
             .then(data => setAnimals(data))
             .catch(error => console.error('Error fetching animal data:', error));

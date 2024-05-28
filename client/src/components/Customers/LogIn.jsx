@@ -1,49 +1,53 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
-function LogIn() {
+function LogIn({ onLogin, user }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const history = useHistory();
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        try {
-            const response = await fetch('http://localhost:5555/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ userName: username, password: password }),
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userName: username, password: password }),
+            credentials: 'include',
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.id) {
+                    onLogin(data);
+                } else {
+                    console.error('Login failed:', data.errors);
+                }
+            })
+            .catch(error => {
+                console.error('Error logging in:', error);
             });
-            if (!response.ok) {
-                throw new Error('Login failed');
-            }
-            history.push('/home');
-        } catch (error) {
-            console.error('Login failed:', error);
-            toast.error('Login failed. Please check your username and password.');
-        }
     };
+
+    if (user) {
+        return <Redirect to="/home" />
+    }
 
     return (
         <form onSubmit={handleSubmit}>
-            <h2>Log In</h2>
             <div>
                 <label>Username:</label>
-                <input 
-                    type="text" 
-                    value={username} 
-                    onChange={(e) => setUsername(e.target.value)} 
+                <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                 />
             </div>
             <div>
                 <label>Password:</label>
-                <input 
-                    type="password" 
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)} 
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
             </div>
             <button type="submit">Log In</button>
@@ -52,3 +56,4 @@ function LogIn() {
 }
 
 export default LogIn;
+

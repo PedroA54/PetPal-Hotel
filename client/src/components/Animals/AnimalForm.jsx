@@ -6,13 +6,13 @@ function AddAnimal() {
     const [name, setName] = useState('');
     const [species, setSpecies] = useState('');
     const [age, setAge] = useState('');
-    const [customerId, setCustomerId] = useState(''); 
+    const [customerId, setCustomerId] = useState('');
     const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5555/animals', {
+            const response = await fetch('/animals', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ function AddAnimal() {
                     name: name,
                     species: species,
                     age: age,
-                    customer_id: customerId, 
+                    customer_id: customerId,
                 }),
             });
 
@@ -44,38 +44,38 @@ function AddAnimal() {
             <h2>Add Animal</h2>
             <div>
                 <label>Name:</label>
-                <input 
-                    type="text" 
-                    value={name} 
-                    onChange={(e) => setName(e.target.value)} 
-                    required 
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
                 />
             </div>
             <div>
                 <label>Species:</label>
-                <input 
-                    type="text" 
-                    value={species} 
-                    onChange={(e) => setSpecies(e.target.value)} 
-                    required 
+                <input
+                    type="text"
+                    value={species}
+                    onChange={(e) => setSpecies(e.target.value)}
+                    required
                 />
             </div>
             <div>
                 <label>Age:</label>
-                <input 
-                    type="number" 
-                    value={age} 
-                    onChange={(e) => setAge(e.target.value)} 
-                    required 
+                <input
+                    type="number"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                    required
                 />
             </div>
             <div>
                 <label>Customer ID:</label>
-                <input 
-                    type="text" 
-                    value={customerId} 
-                    onChange={(e) => setCustomerId(e.target.value)} 
-                    required 
+                <input
+                    type="text"
+                    value={customerId}
+                    onChange={(e) => setCustomerId(e.target.value)}
+                    required
                 />
             </div>
             <button type="submit">Add Animal</button>

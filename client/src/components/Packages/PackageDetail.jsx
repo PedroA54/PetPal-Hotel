@@ -6,7 +6,7 @@ function PackageDetails() {
 
     useEffect(() => {
         // Fetch package data from the server
-        fetch('http://localhost:5555/packages')
+        fetch('/packages')
             .then(response => response.json())
             .then(data => setPackages(data))
             .catch(error => console.error('Error fetching package data:', error));

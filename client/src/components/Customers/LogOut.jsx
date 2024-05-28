@@ -7,7 +7,7 @@ function LogOut() {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch('http://localhost:5555/logout', {
+            const response = await fetch('/logout', {
                 method: 'DELETE',
             });
             if (!response.ok) {

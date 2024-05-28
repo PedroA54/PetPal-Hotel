@@ -10,7 +10,7 @@ function SignUp() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5555/signup', {
+            const response = await fetch('/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,19 +36,19 @@ function SignUp() {
             <h2>Sign Up</h2>
             <div>
                 <label>Username:</label>
-                <input 
-                    type="text" 
-                    value={userName} 
-                    onChange={(e) => setUserName(e.target.value)} 
+                <input
+                    type="text"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
                     required
                 />
             </div>
             <div>
                 <label>Password:</label>
-                <input 
-                    type="password" 
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)} 
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                 />
             </div>

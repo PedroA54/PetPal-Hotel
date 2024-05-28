@@ -74,6 +74,14 @@ class LogOut(Resource):
         session.pop("user_id", None)
         return "", 204
 
+class CheckSession(Resource):
+    def get(self):
+        user_id = session.get('user_id')
+        if user_id:
+            user = Customer.query.filter_by(id=user_id).first()
+            if user:
+                return user.to_dict(), 200
+        return {"error": "User not found"}, 401
 
 class UpdateUser(Resource):
     def patch(self, id):
@@ -222,6 +230,7 @@ class PackageList(Resource):
 api.add_resource(SignUp, "/signup")
 api.add_resource(LogIn, "/login")
 api.add_resource(LogOut, "/logout")
+api.add_resource(CheckSession, "/check_session")
 api.add_resource(UpdateUser, "/users/<int:id>")
 api.add_resource(AnimalList, "/animals")
 api.add_resource(AnimalDetail, "/animals/<int:animal_id>")
