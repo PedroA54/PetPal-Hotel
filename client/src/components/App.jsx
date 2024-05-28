@@ -54,7 +54,7 @@ function App() {
                         <EntryPage />
                     </Route>
                     <Route path="/home">
-                        <HomePage />
+                        <HomePage user={user} />
                     </Route>
                     <Route path="/appointment">
                         <AppointmentPage />
@@ -69,10 +69,10 @@ function App() {
                         <AddAnimal />
                     </Route>
                     <Route path="/signup">
-                        <SignUp onLogin={handleLogin} />
+                        <SignUp onLogin={handleLogin} user={user} setUser={setUser} />
                     </Route>
                     <Route path="/login">
-                        <LogIn onLogin={handleLogin} user={user} />
+                        <LogIn onLogin={handleLogin} user={user} setUser={setUser} />
                     </Route>
                 </Switch>
             </div>

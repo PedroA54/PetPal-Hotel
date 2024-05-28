@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
-function SignUp() {
+function SignUp({ user, setUser }) {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
-    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,13 +22,17 @@ function SignUp() {
                 throw new Error(errorData.errors ? errorData.errors.join(', ') : 'Sign Up failed');
             }
 
-            await response.json();
-            history.push('/home');
+            const data = await response.json();
+            setUser(data)
         } catch (error) {
             console.error('Sign Up failed:', error);
             toast.error(error.message);
         }
     };
+
+    if (user) {
+        return <Redirect to="/home" />
+    }
 
     return (
         <form onSubmit={handleSubmit}>

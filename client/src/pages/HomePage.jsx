@@ -2,13 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import AddAnimal from '../components/Animals/AnimalForm';
 
-function HomePage() {
+function HomePage({ user }) {
     return (
         <>
             <header>
-                <h1>Hello, Welcome to PetPal Hotel</h1>
+                <h1>Hello{user ? `, ${user.userName}` : null}. Welcome to PetPal Hotel</h1>
             </header>
-            
+
             <nav>
                 <NavLink to="/appointment" className="nav-link">
                     Appointment
@@ -20,11 +20,11 @@ function HomePage() {
                     View Pets
                 </NavLink>
             </nav>
-            
+
             <section>
                 <AddAnimal />
             </section>
-            
+
         </>
     );
 }
