@@ -10,6 +10,8 @@ import AddAnimal from '../components/Animals/AnimalForm';
 import SignUp from '../components/Customers/SignUp';
 import LogIn from '../components/Customers/LogIn';
 
+
+// Implement useState un the function
 function App() {
     return (
         <Router>
