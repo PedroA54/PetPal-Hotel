@@ -88,15 +88,7 @@ function AddAnimal() {
                     required
                 />
             </div>
-            <div>
-                <label>Customer ID:</label>
-                <input
-                    type="text"
-                    value={customerId}
-                    onChange={(e) => setCustomerId(e.target.value)}
-                    required
-                />
-            </div>
+            
             <button type="submit">Add Animal</button>
             {successMessage && <p>{successMessage}</p>}
         </form>
