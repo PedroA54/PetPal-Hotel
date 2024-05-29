@@ -4,13 +4,14 @@ from sqlalchemy import Column, Date, ForeignKey, Integer
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy_serializer import SerializerMixin
+from sqlalchemy.orm import validates
 
 
 # Models go here!
 class Customer(db.Model, SerializerMixin):
     __tablename__ = "customers"
     id = db.Column(db.Integer, primary_key=True)
-    userName = db.Column(db.String(100), nullable=False)
+    userName = db.Column(db.String(100), nullable=vbznalse)
     _password_hash = db.Column(db.String(128), nullable=False)
 
     # Relationships
@@ -20,6 +21,15 @@ class Customer(db.Model, SerializerMixin):
     serialize_rules = ("-animals.customer", "-_password_hash")
 
     serialize_rules = ("-animals.customer", "-_password_hash")
+
+
+    @validates('userName')
+    def validate_userName(self, _, userName):
+        if not userName:
+            raise ValueError("userName cannot be empty")
+        if len(userName) > 100:
+            raise ValueError("userName cannot exceed 100 characters")
+        return userName
 
     @hybrid_property
     def password_hash(self):
