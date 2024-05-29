@@ -1,4 +1,7 @@
+// PackageDetails.js
+
 import React, { useState, useEffect } from 'react';
+import './Package.css';
 
 function PackageDetails() {
     const [packages, setPackages] = useState([]);
@@ -16,7 +19,7 @@ function PackageDetails() {
     };
 
     return (
-        <div>
+        <div className="package-container"> {/* Added className */}
             <h2>Available Packages</h2>
             {packages.length === 0 ? (
                 <p>No packages available.</p>
@@ -30,7 +33,7 @@ function PackageDetails() {
                 </ul>
             )}
             {selectedPackage && (
-                <div>
+                <div className="package-details">
                     <h2>Package Details</h2>
                     <p><strong>Name:</strong> {selectedPackage.name}</p>
                     <p><strong>Description:</strong> {selectedPackage.description}</p>
