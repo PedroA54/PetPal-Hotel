@@ -12,7 +12,7 @@ function EntryPage() {
                 <LogIn />
                 <LogOut />
             </section>
-            
+
             <NavLink to="/signup" className="nav-link">
                 Sign Up
             </NavLink>
