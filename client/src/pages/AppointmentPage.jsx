@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import CreateBooking from "../components/Bookings/BookingForm";
 import PackageDescription from "../components/Packages/PackageDetail";
 

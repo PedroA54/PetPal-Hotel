@@ -1,6 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import AnimalsDetail from "../components/Animals/AnimalDetail";
-
 import AddAnimal from '../components/Animals/AnimalForm';
 
 function ProfilePage() {
@@ -13,10 +13,6 @@ function ProfilePage() {
             <section>
                 <AddAnimal />
             </section>
-            
-            
-            
-            
         </>
     );
 }
