@@ -16,21 +16,21 @@ function AnimalHome() {
     };
 
     return (
-        <div>
-            <h2>Animals List</h2>
-            {animals.length === 0 ? (
-                <p>No animals available.</p>
-            ) : (
-                <ul>
-                    {animals.map(animal => (
-                        <li key={animal.id}>
-                            <a href="#" onClick={() => handleAnimalClick(animal)}>{animal.name}</a>
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </div>
-    );
+<div className="package-container">
+    <h2>Animals List</h2>
+    {animals.length === 0 ? (
+        <p>No animals available.</p>
+    ) : (
+        <ul>
+            {animals.map(animal => (
+                <li key={animal.id}>
+                    <a href="#" onClick={() => handleAnimalClick(animal)}>{animal.name}</a>
+                </li>
+            ))}
+        </ul>
+    )}
+</div>
+);
 }
 
 export default AnimalHome;

@@ -1,0 +1,36 @@
+.package-container {
+    background-color: #ffc93c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+}
+
+.package-container h2 {
+    margin-bottom: 20px;
+}
+
+.package-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.package-container ul li {
+    margin-bottom: 10px;
+}
+
+.package-container ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.package-container ul li a:hover {
+    color: #666;
+}
