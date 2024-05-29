@@ -42,6 +42,7 @@ class Animal(db.Model, SerializerMixin):
     name = db.Column(db.String(100), nullable=False)
     species = db.Column(db.String(100), nullable=False)
     age = db.Column(db.Integer, nullable=False)
+    photo_url = db.Column(db.String(255)) 
     customer_id = db.Column(
         db.Integer, db.ForeignKey("customers.id", ondelete="CASCADE"), nullable=False
     )

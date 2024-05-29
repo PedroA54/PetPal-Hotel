@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
-function LogIn({ onLogin, user }) {
+function LogIn({ setUser, user }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -18,7 +18,7 @@ function LogIn({ onLogin, user }) {
             .then(response => response.json())
             .then(data => {
                 if (data.id) {
-                    onLogin(data);
+                    setUser(data)
                 } else {
                     console.error('Login failed:', data.errors);
                 }

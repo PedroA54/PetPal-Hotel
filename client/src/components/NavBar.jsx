@@ -4,11 +4,11 @@ import { NavLink, Link } from "react-router-dom";
 function NavBar({ user, onLogout }) {
     return (
         <nav className="navbar">
-            <NavLink to="/" className="nav-link">
-                Entry
-            </NavLink>
             <NavLink to="/home" className="nav-link">
                 Home Page
+            </NavLink>
+            <NavLink to="/pets" className="nav-link">
+                Pets
             </NavLink>
             <NavLink to="/appointment" className="nav-link">
                 Appointment

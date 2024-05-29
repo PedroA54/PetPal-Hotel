@@ -29,6 +29,7 @@ def index():
 # ********
 # Customer
 # ********
+#user.password_hash = password             
 class SignUp(Resource):
     def post(self):
         data = request.get_json()
@@ -36,7 +37,7 @@ class SignUp(Resource):
         password = data.get("password")
         try:
             user = Customer(userName=username)
-            user.password_hash = password
+            user.password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
             db.session.add(user)
             db.session.commit()
             session["user_id"] = user.id
@@ -44,6 +45,8 @@ class SignUp(Resource):
         except IntegrityError as e:
             db.session.rollback()
             return {"errors": [str(e)]}, 422
+
+
 
 
 class LogIn(Resource):
@@ -206,27 +209,21 @@ class PackageList(Resource):
         return [package.to_dict() for package in packages], 200
 
     def post(self):
-        # Extract data from the request JSON
         data = request.get_json()
         if not data:
             return {"message": "No input data provided"}, 400
 
-        # Create a new Package object
         new_package = Package(
             name=data.get("name"),
             description=data.get("description"),
             price_per_night=data.get("price_per_night"),
         )
 
-        # Add the new package to the database session
         db.session.add(new_package)
         db.session.commit()
-
-        # Return a response indicating success
         return {"message": "Package added successfully"}, 201
 
 
-# Adding resources to the API
 api.add_resource(SignUp, "/signup")
 api.add_resource(LogIn, "/login")
 api.add_resource(LogOut, "/logout")

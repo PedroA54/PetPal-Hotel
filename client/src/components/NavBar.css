@@ -1,0 +1,26 @@
+/* NavBar.css */
+
+.navbar {
+    background-color: #155263;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.navbar .nav-link {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    background-color: #575757;
+}
+
+.navbar button {
+    float: right;
+    margin: 10px 100px;
+}

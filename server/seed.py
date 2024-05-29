@@ -74,17 +74,17 @@ if __name__ == "__main__":
         # Package
         p1 = Package(
             name="Ultra Package",
-            description="Includes a 15 min walk, playtime in the yard for 15 min, and indoor social time for 15 min",
+            description="Includes a comfortable bed, daily playtime, regular feeding, and medication administration as needed.",
             price_per_night=50.00,
         )
         p2 = Package(
             name="Deluxe Package",
-            description="Includes a 30 min walk, playtime in the yard for 30 min, and indoor social time for 30 min",
+            description="Includes A cozy sleeping area, supervised outdoor time, daily enrichment activities, and medication administration as needed.",
             price_per_night=75.00,
         )
         p3 = Package(
             name="Diamond Package",
-            description="Includes a 1 hour of outdoor walk, playtime in the yard for 1 hour, and indoor social time for 1 hour a day",
+            description="Includes Luxury sleeping accommodations, personalized attention, access to all amenities and outdoor activities, and medication administration as needed.",
             price_per_night=85.00,
         )
 
