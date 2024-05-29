@@ -5,7 +5,6 @@ function PackageDetails() {
     const [selectedPackage, setSelectedPackage] = useState(null);
 
     useEffect(() => {
-        // Fetch package data from the server
         fetch('/packages')
             .then(response => response.json())
             .then(data => setPackages(data))
