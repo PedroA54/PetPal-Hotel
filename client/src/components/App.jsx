@@ -50,7 +50,7 @@ function App() {
     return (
         <Router>
             <div>
-            <NavBar user={user} onLogout={handleLogout} />
+                <NavBar user={user} onLogout={handleLogout} />
                 <Switch>
                     <Route exact path="/">
                         <EntryPage />
@@ -72,9 +72,6 @@ function App() {
                     </Route>
                     <Route path="/login">
                         <LogIn onLogin={handleLogin} user={user} setUser={setUser} />
-                    </Route>
-                    <Route path="/logout">
-                        <LogIn onLogout={handleLogout} user={user} setUser={setUser} />
                     </Route>
                 </Switch>
             </div>
