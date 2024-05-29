@@ -5,6 +5,7 @@ function CreateBooking() {
     const [checkOutDate, setCheckOutDate] = useState('');
     const [animalId, setAnimalId] = useState('');
     const [packageId, setPackageId] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,6 +29,9 @@ function CreateBooking() {
 
             const newBooking = await response.json();
             console.log('Booking created:', newBooking);
+
+             // Set the success message
+            setSuccessMessage('Booking Successfully Created');
 
             // Reset the form fields
             setCheckInDate('');
@@ -83,6 +87,7 @@ function CreateBooking() {
                 />
             </div>
             <button type="submit">Create Booking</button>
+            {successMessage && <p>{successMessage}</p>}
         </form>
     );
 }
