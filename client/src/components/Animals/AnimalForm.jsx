@@ -41,6 +41,9 @@ function AddAnimal() {
 
             // Set the success message
             setSuccessMessage('Animal has been added to profile');
+            setName('')
+            setAge('')
+            setSpecies('')
 
             // Navigate to the desired route after successful submission
             // history.push('/home');
