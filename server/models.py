@@ -11,7 +11,7 @@ from sqlalchemy.orm import validates
 class Customer(db.Model, SerializerMixin):
     __tablename__ = "customers"
     id = db.Column(db.Integer, primary_key=True)
-    userName = db.Column(db.String(100), nullable=vbznalse)
+    userName = db.Column(db.String(100), nullable=False)
     _password_hash = db.Column(db.String(128), nullable=False)
 
     # Relationships
@@ -22,8 +22,7 @@ class Customer(db.Model, SerializerMixin):
 
     serialize_rules = ("-animals.customer", "-_password_hash")
 
-
-    @validates('userName')
+    @validates("userName")
     def validate_userName(self, _, userName):
         if not userName:
             raise ValueError("userName cannot be empty")
@@ -52,7 +51,7 @@ class Animal(db.Model, SerializerMixin):
     name = db.Column(db.String(100), nullable=False)
     species = db.Column(db.String(100), nullable=False)
     age = db.Column(db.Integer, nullable=False)
-    photo_url = db.Column(db.String(255)) 
+    photo_url = db.Column(db.String(255))
     customer_id = db.Column(
         db.Integer, db.ForeignKey("customers.id", ondelete="CASCADE"), nullable=False
     )
