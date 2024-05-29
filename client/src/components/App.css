@@ -3,7 +3,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #c67575;
+    background-color: #ff9a3c;
     color: #333;
 }
 
@@ -14,7 +14,7 @@ h2 {
 
 button {
     cursor: pointer;
-    background-color: #007bff;
+    background-color: #ff6f3c;
     color: white;
     border: none;
     padding: 10px 20px;
