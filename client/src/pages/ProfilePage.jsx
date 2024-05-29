@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import AnimalsDetail from "../components/Animals/AnimalDetail";
-import CreateBooking from "../components/Bookings/BookingForm";
 import AddAnimal from '../components/Animals/AnimalForm';
 
 function ProfilePage() {

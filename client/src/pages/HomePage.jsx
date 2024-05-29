@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import AddAnimal from '../components/Animals/AnimalForm';
 import foxLogo from '/Users/kianeitzell/development/code/phase-4/p4-group-project/client/src/components/fox.png'; // Import the image
 import AnimalsDetail from "../components/Animals/AnimalDetail";function HomePage({ user }) {
