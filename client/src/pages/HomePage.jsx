@@ -10,12 +10,6 @@ function HomePage({ user }) {
             </header>
 
             <nav>
-                <NavLink to="/appointment" className="nav-link">
-                    Appointment
-                </NavLink>
-                <NavLink to="/profile" className="nav-link">
-                    Profile
-                </NavLink>
                 <NavLink to="/pets" className="nav-link">
                     View Pets
                 </NavLink>
