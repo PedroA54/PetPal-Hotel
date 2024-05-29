@@ -1,26 +1,21 @@
 import React from "react";
-//import { NavLink } from "react-router-dom";
+
 import AddAnimal from '../components/Animals/AnimalForm';
+import AnimalHome from "../components/Animals/AnimalListHome";
 
-import AnimalsDetail from "../components/Animals/AnimalDetail";function HomePage({ user }) {
-
-
+function HomePage({ user }) {
     return (
-        <>
+        <div className="home-page-container">
             <header>
                 <h1>Hello{user ? `, ${user.userName}` : null}. Welcome to PetPal Hotel!</h1>
-                
             </header>
             <section>
                 <AddAnimal />
             </section>
             <section>
-                <AnimalsDetail />
+                <AnimalHome />
             </section>
-
-
-
-        </>
+        </div>
     );
 }
 

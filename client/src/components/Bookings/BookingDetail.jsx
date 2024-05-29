@@ -92,7 +92,7 @@ function BookingDetail() {
                 <ul>
                     {bookings.map(booking => (
                         <li key={booking.id}>
-                            <a href="#" onClick={() => handleBookingClick(booking)}>Booking ID: {booking.id}</a>
+                            <a href="#" onClick={() => handleBookingClick(booking)}>Booking {booking.id}</a>
                         </li>
                     ))}
                 </ul>
