@@ -29,7 +29,7 @@ def index():
 # ********
 # Customer
 # ********
-#user.password_hash = password             
+# user.password_hash = password
 class SignUp(Resource):
     def post(self):
         data = request.get_json()
@@ -37,7 +37,7 @@ class SignUp(Resource):
         password = data.get("password")
         try:
             user = Customer(userName=username)
-            user.password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
+            user.password_hash = bcrypt.generate_password_hash(password).decode("utf-8")
             db.session.add(user)
             db.session.commit()
             session["user_id"] = user.id
@@ -45,8 +45,6 @@ class SignUp(Resource):
         except IntegrityError as e:
             db.session.rollback()
             return {"errors": [str(e)]}, 422
-
-
 
 
 class LogIn(Resource):
@@ -77,14 +75,16 @@ class LogOut(Resource):
         session.pop("user_id", None)
         return "", 204
 
+
 class CheckSession(Resource):
     def get(self):
-        user_id = session.get('user_id')
+        user_id = session.get("user_id")
         if user_id:
             user = Customer.query.filter_by(id=user_id).first()
             if user:
                 return user.to_dict(), 200
         return {"error": "User not found"}, 401
+
 
 class UpdateUser(Resource):
     def patch(self, id):
@@ -102,17 +102,32 @@ class UpdateUser(Resource):
 # ********
 class AnimalList(Resource):
     def get(self):
-        animals = Animal.query.all()
-        return [animal.to_dict() for animal in animals], 200
+        user_id = session.get("user_id")
+        if not user_id:
+            return {"error": "Unauthorized"}, 401
+
+        try:
+            customer = Customer.query.get(user_id)
+            if not customer:
+                return {"error": "Customer not found"}, 404
+
+            animals = Animal.query.filter_by(customer_id=user_id).all()
+            return [animal.to_dict() for animal in animals], 200
+        except NoResultFound:
+            return {"error": "No animals found for this user"}, 404
 
     def post(self):
+        user_id = session.get("user_id")
+        if not user_id:
+            return {"error": "Unauthorized"}, 401
+
         if request.is_json:
             data = request.get_json()
             new_animal = Animal(
                 name=data["name"],
                 species=data["species"],
                 age=data["age"],
-                customer_id=data["customer_id"],
+                customer_id=user_id,
             )
             db.session.add(new_animal)
             db.session.commit()
