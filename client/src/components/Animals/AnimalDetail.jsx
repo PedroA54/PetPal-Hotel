@@ -5,7 +5,7 @@ function AnimalsList() {
     const [selectedAnimal, setSelectedAnimal] = useState(null);
 
     useEffect(() => {
-        // Fetch animal data from the server
+        
         fetch('/animals')
             .then(response => response.json())
             .then(data => setAnimals(data))

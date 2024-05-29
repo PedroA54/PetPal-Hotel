@@ -7,9 +7,6 @@ function NavBar({ user, onLogout }) {
             <NavLink to="/home" className="nav-link">
                 Home Page
             </NavLink>
-            <NavLink to="/pets" className="nav-link">
-                Pets
-            </NavLink>
             <NavLink to="/appointment" className="nav-link">
                 Appointment
             </NavLink>

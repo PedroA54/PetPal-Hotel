@@ -5,7 +5,6 @@ import HomePage from '../pages/HomePage';
 import EntryPage from '../pages/EntryPage';
 import AppointmentPage from '../pages/AppointmentPage';
 import ProfilePage from '../pages/ProfilePage';
-import PetPage from '../pages/PetPage';
 import AddAnimal from '../components/Animals/AnimalForm';
 import SignUp from '../components/Customers/SignUp';
 import LogIn from '../components/Customers/LogIn';
@@ -64,9 +63,6 @@ function App() {
                     </Route>
                     <Route path="/profile">
                         <ProfilePage />
-                    </Route>
-                    <Route path="/pets">
-                        <PetPage />
                     </Route>
                     <Route path="/add-animal">
                         <AddAnimal />
