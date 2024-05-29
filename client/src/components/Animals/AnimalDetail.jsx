@@ -8,6 +8,7 @@ function AnimalsList() {
     const [editedAnimal, setEditedAnimal] = useState(null);
     const [isSaving, setIsSaving] = useState(false); // State to track save operation
 
+    
     useEffect(() => {
         fetch('/animals')
             .then(response => response.json())
