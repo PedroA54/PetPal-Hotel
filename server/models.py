@@ -65,6 +65,11 @@ class Animal(db.Model, SerializerMixin):
     def __repr__(self):
         return f"Animal(id={self.id}, name='{self.name}', species='{self.species}', age={self.age}, customer_id={self.customer_id})"
 
+    def validate_age(self, key, age):
+        if not 1 <= age <= 30:
+            raise ValueError("Age must be between 1 and 30.")
+        return age
+
 
 class Booking(db.Model, SerializerMixin):
     __tablename__ = "bookings"
