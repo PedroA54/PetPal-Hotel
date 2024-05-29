@@ -19,4 +19,5 @@ function HomePage({ user }) {
     );
 }
 
+
 export default HomePage;

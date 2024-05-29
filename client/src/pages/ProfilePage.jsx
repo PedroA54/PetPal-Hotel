@@ -1,7 +1,6 @@
 import React from "react";
-
 import AnimalsDetail from "../components/Animals/AnimalDetail";
-import BookingDetail from "../components/Bookings/BookingDetail";
+
 import AddAnimal from '../components/Animals/AnimalForm';
 
 function ProfilePage() {
@@ -12,11 +11,12 @@ function ProfilePage() {
                 <AnimalsDetail />
             </section>
             <section>
-                <BookingDetail />
-            </section>
-            <section>
                 <AddAnimal />
             </section>
+            
+            
+            
+            
         </>
     );
 }
