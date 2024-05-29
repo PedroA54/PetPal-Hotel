@@ -1,7 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+
 import AnimalsDetail from "../components/Animals/AnimalDetail";
-import CreateBooking from "../components/Bookings/BookingForm";
+import BookingDetail from "../components/Bookings/BookingDetail";
 import AddAnimal from '../components/Animals/AnimalForm';
 
 function ProfilePage() {
@@ -10,6 +10,9 @@ function ProfilePage() {
             <h1>This is the Profile Page</h1>
             <section>
                 <AnimalsDetail />
+            </section>
+            <section>
+                <BookingDetail />
             </section>
             <section>
                 <AddAnimal />

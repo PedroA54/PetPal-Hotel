@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+//import { NavLink } from "react-router-dom";
 import AddAnimal from '../components/Animals/AnimalForm';
 
 import AnimalsDetail from "../components/Animals/AnimalDetail";function HomePage({ user }) {
