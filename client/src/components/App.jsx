@@ -13,7 +13,7 @@ import './Form.css';
 import './NavBar.css';
 
 function App() {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState();
 
     useEffect(() => {
         fetch('/check_session', {
@@ -59,13 +59,10 @@ function App() {
                         <HomePage user={user} />
                     </Route>
                     <Route path="/appointment">
-                        <AppointmentPage />
+                        <AppointmentPage user={user} />
                     </Route>
                     <Route path="/profile">
-                        <ProfilePage />
-                    </Route>
-                    <Route path="/add-animal">
-                        <AddAnimal />
+                        <ProfilePage user={user} />
                     </Route>
                     <Route path="/signup">
                         <SignUp onLogin={handleLogin} user={user} setUser={setUser} />
