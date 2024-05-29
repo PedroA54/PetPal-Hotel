@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 function CreateBooking() {
     const [checkInDate, setCheckInDate] = useState('');
     const [checkOutDate, setCheckOutDate] = useState('');
     const [animalId, setAnimalId] = useState('');
     const [packageId, setPackageId] = useState('');
-    const history = useHistory();
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,8 +30,14 @@ function CreateBooking() {
             const newBooking = await response.json();
             console.log('Booking created:', newBooking);
 
-            // Navigate to the desired route after successful submission
-            history.push('/bookings');
+             // Set the success message
+            setSuccessMessage('Booking Successfully Created');
+
+            // Reset the form fields
+            setCheckInDate('');
+            setCheckOutDate('');
+            setAnimalId('');
+            setPackageId('');
         } catch (error) {
             console.error('Failed to create booking:', error);
         }
@@ -82,6 +87,7 @@ function CreateBooking() {
                 />
             </div>
             <button type="submit">Create Booking</button>
+            {successMessage && <p>{successMessage}</p>}
         </form>
     );
 }
