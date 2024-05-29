@@ -1,14 +1,9 @@
 import React from "react";
 import CreateBooking from "../components/Bookings/BookingForm";
 import PackageDescription from "../components/Packages/PackageDetail";
-import { Redirect } from "react-router-dom";
-
-function AppointmentPage({ user }) {
 
 
-    if (user == null) {
-        return <Redirect to="/login" />
-    }
+function AppointmentPage() {
     return (
         <>
             <h1>Make an Appointment</h1>

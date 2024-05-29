@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-
-function AddAnimal({ user }) {
-
+function AddAnimal() {
     const [name, setName] = useState('');
     const [species, setSpecies] = useState(''); // Initialize to empty string
     const [age, setAge] = useState('');
     const [customerId, setCustomerId] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const history = useHistory();
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -88,6 +85,15 @@ function AddAnimal({ user }) {
                     onChange={(e) => setAge(e.target.value)}
                     min="1"
                     max="30"
+                    required
+                />
+            </div>
+            <div>
+                <label>Customer ID:</label>
+                <input
+                    type="text"
+                    value={customerId}
+                    onChange={(e) => setCustomerId(e.target.value)}
                     required
                 />
             </div>

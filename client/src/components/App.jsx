@@ -13,7 +13,7 @@ import './Form.css';
 import './NavBar.css';
 
 function App() {
-    const [user, setUser] = useState();
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         fetch('/check_session', {
@@ -50,7 +50,7 @@ function App() {
     return (
         <Router>
             <div>
-                <NavBar user={user} onLogout={handleLogout} />
+            <NavBar user={user} onLogout={handleLogout} />
                 <Switch>
                     <Route exact path="/">
                         <EntryPage />
@@ -59,19 +59,22 @@ function App() {
                         <HomePage user={user} />
                     </Route>
                     <Route path="/appointment">
-                        <AppointmentPage user={user} />
+                        <AppointmentPage />
                     </Route>
                     <Route path="/profile">
-                        <ProfilePage user={user} />
+                        <ProfilePage />
                     </Route>
                     <Route path="/add-animal">
-                        <AddAnimal user={user} />
+                        <AddAnimal />
                     </Route>
                     <Route path="/signup">
                         <SignUp onLogin={handleLogin} user={user} setUser={setUser} />
                     </Route>
                     <Route path="/login">
                         <LogIn onLogin={handleLogin} user={user} setUser={setUser} />
+                    </Route>
+                    <Route path="/logout">
+                        <LogIn onLogout={handleLogout} user={user} setUser={setUser} />
                     </Route>
                 </Switch>
             </div>
