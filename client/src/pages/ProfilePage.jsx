@@ -1,12 +1,11 @@
 import React from "react";
 import AnimalsDetail from "../components/Animals/AnimalDetail";
-
 import AddAnimal from '../components/Animals/AnimalForm';
 import { Redirect } from "react-router-dom";
+import BookingDetail from "../components/Bookings/BookingDetail";
 
 function ProfilePage({user}) {
-
-    if (user == null){
+    if (user === null){
         return <Redirect to="/login" />
     }
     return (
@@ -14,6 +13,9 @@ function ProfilePage({user}) {
             <h1>This is the Profile Page</h1>
             <section>
                 <AnimalsDetail />
+            </section>
+            <section>
+                <BookingDetail />
             </section>
             <section>
                 <AddAnimal />

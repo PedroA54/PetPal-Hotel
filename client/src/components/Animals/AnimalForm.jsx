@@ -5,7 +5,6 @@ function AddAnimal() {
     const [name, setName] = useState('');
     const [species, setSpecies] = useState(''); // Initialize to empty string
     const [age, setAge] = useState('');
-    const [customerId, setCustomerId] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const history = useHistory();
 
@@ -28,7 +27,7 @@ function AddAnimal() {
                     name: name,
                     species: species,
                     age: age,
-                    customer_id: customerId,
+                    
                 }),
             });
 
@@ -41,6 +40,9 @@ function AddAnimal() {
 
             // Set the success message
             setSuccessMessage('Animal has been added to profile');
+            setName('')
+            setAge('')
+            setSpecies('')
 
             // Navigate to the desired route after successful submission
             // history.push('/home');

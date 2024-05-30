@@ -1,19 +1,34 @@
 import React, { useState, useEffect } from 'react';
 
-
 function AnimalsList() {
     const [animals, setAnimals] = useState([]);
     const [selectedAnimal, setSelectedAnimal] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [editedAnimal, setEditedAnimal] = useState(null);
     const [isSaving, setIsSaving] = useState(false); // State to track save operation
+    const [isLoggedIn, setIsLoggedIn] = useState(true); // State to track login status
 
     useEffect(() => {
-        fetch('/animals')
+        fetch('/check_session')
             .then(response => response.json())
-            .then(data => setAnimals(data))
-            .catch(error => console.error('Error fetching animal data:', error));
+            .then(data => {
+                if (data.error) {
+                    setIsLoggedIn(false);
+                } else {
+                    setIsLoggedIn(true);
+                }
+            })
+            .catch(error => console.error('Error checking session:', error));
     }, []);
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            fetch('/animals')
+                .then(response => response.json())
+                .then(data => setAnimals(data))
+                .catch(error => console.error('Error fetching animal data:', error));
+        }
+    }, [isLoggedIn]);
 
     useEffect(() => {
         if (isSaving && editedAnimal) {
@@ -84,6 +99,10 @@ function AnimalsList() {
         }));
     };
 
+    if (!isLoggedIn) {
+        return <p>You must be logged in to view this content.</p>;
+    }
+
     return (
         <div>
             <h2>Animals List</h2>
@@ -100,7 +119,7 @@ function AnimalsList() {
             )}
             {selectedAnimal && (
                 <div>
-                    <h2>Animal Details</h2>
+                <h2>Animal Details</h2>
                     {isEditing ? (
                         <div>
                             <p><strong>Name:</strong> <input type="text" name="name" value={editedAnimal.name} onChange={handleChange} /></p>
@@ -127,3 +146,4 @@ function AnimalsList() {
 }
 
 export default AnimalsList;
+
