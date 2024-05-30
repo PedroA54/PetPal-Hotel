@@ -104,7 +104,7 @@ function AnimalsList() {
     }
 
     return (
-        <div>
+        <div className="package-container">
             <h2>Animals List</h2>
             {animals.length === 0 ? (
                 <p>No animals available.</p>
@@ -118,8 +118,8 @@ function AnimalsList() {
                 </ul>
             )}
             {selectedAnimal && (
-                <div>
-                <h2>Animal Details</h2>
+                <div className="package-details">
+                    <h2>Animal Details</h2>
                     {isEditing ? (
                         <div>
                             <p><strong>Name:</strong> <input type="text" name="name" value={editedAnimal.name} onChange={handleChange} /></p>
@@ -146,4 +146,3 @@ function AnimalsList() {
 }
 
 export default AnimalsList;
-
