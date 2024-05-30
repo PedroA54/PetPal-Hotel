@@ -5,8 +5,7 @@ import { Redirect } from "react-router-dom";
 import BookingDetail from "../components/Bookings/BookingDetail";
 
 function ProfilePage({user}) {
-
-    if (user == null){
+    if (user === null){
         return <Redirect to="/login" />
     }
     return (

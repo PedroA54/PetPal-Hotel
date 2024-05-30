@@ -163,7 +163,8 @@ class AnimalDetail(Resource):
 # ********
 class BookingList(Resource):
     def get(self):
-        bookings = Booking.query.all()
+        customer = Customer.query.get(session["user_id"])
+        bookings = customer.bookings
         return [booking.to_dict() for booking in bookings], 200
 
     def post(self):

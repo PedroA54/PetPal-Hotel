@@ -5,6 +5,7 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
+import itertools
 
 
 # Models go here!
@@ -16,7 +17,7 @@ class Customer(db.Model, SerializerMixin):
 
     # Relationships
     animals = db.relationship("Animal", back_populates="customer")
-    bookings = association_proxy("animals", "bookings")
+    bookings_per_animal = association_proxy("animals", "bookings")
 
     serialize_rules = ("-animals.customer", "-_password_hash")
 
@@ -29,6 +30,10 @@ class Customer(db.Model, SerializerMixin):
         if len(userName) > 100:
             raise ValueError("userName cannot exceed 100 characters")
         return userName
+
+    @hybrid_property
+    def bookings(self):
+        return list(itertools.chain(*self.bookings_per_animal))
 
     @hybrid_property
     def password_hash(self):

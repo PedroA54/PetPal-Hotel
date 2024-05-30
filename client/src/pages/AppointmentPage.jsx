@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom";
 
 
 function AppointmentPage({ user }) {
-    if (user == null) {
+    if (user === null) {
         return <Redirect to="/login" />
     }
     return (

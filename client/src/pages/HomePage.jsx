@@ -5,7 +5,7 @@ import AnimalHome from "../components/Animals/AnimalListHome";
 import { Redirect } from "react-router-dom";
 
 function HomePage({ user }) {
-    if (user == null) {
+    if (user === null) {
         return <Redirect to="/login" />
     }
     return (
