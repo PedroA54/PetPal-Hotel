@@ -35,6 +35,7 @@ function LogIn({ setUser, user }) {
     return (
         <form onSubmit={handleSubmit}>
             <div>
+                <h1> Log in</h1>
                 <label>Username:</label>
                 <input
                     type="text"

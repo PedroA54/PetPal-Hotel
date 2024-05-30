@@ -36,7 +36,7 @@ function SignUp({ user, setUser }) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <h2>Sign Up</h2>
+            <h1>Sign Up</h1>
             <div>
                 <label>Username:</label>
                 <input
