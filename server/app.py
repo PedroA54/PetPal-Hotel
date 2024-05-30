@@ -128,6 +128,7 @@ class AnimalList(Resource):
                 species=data["species"],
                 age=data["age"],
                 customer_id=user_id,
+                photo_url=data["photo"],
             )
             db.session.add(new_animal)
             db.session.commit()
@@ -153,6 +154,7 @@ class AnimalDetail(Resource):
             animal.name = data.get("name", animal.name)
             animal.species = data.get("species", animal.species)
             animal.age = data.get("age", animal.age)
+            animal.photo_url=data.get("photo", animal.photo)
             db.session.commit()
             return animal.to_dict(), 200
         return {"error": "Request must be JSON"}, 400
