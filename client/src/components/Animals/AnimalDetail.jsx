@@ -103,7 +103,7 @@ function AnimalsList() {
     if (!isLoggedIn) {
         return <p>You must be logged in to view this content.</p>;
     }
-    console.log(selectedAnimal)
+    
     return (
         <div className="animal-container">
             <h2>Animals List</h2>

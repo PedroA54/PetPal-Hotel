@@ -154,7 +154,7 @@ class AnimalDetail(Resource):
             animal.name = data.get("name", animal.name)
             animal.species = data.get("species", animal.species)
             animal.age = data.get("age", animal.age)
-            animal.photo_url=data.get("photo", animal.photo)
+            animal.photo_url = data.get("photo", animal.photo_url)
             db.session.commit()
             return animal.to_dict(), 200
         return {"error": "Request must be JSON"}, 400
