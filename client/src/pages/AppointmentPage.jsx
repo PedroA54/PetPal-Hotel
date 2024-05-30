@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+
 import CreateBooking from "../components/Bookings/BookingForm";
 import PackageDescription from "../components/Packages/PackageDetail";
 import { Redirect } from "react-router-dom";
@@ -11,9 +11,16 @@ function AppointmentPage({ user }) {
     }
     return (
         <>
-            <h1>Make an Appointment</h1>
+        <h1>Make an Appointment</h1>
+        <div className="appointment-page-container">
+            
+            <section className="create-booking-section">
             <CreateBooking />
+            </section>
+            <section className="package-detail-section">
             <PackageDescription />
+            </section>
+            </div>
         </>
     );
 }

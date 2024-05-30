@@ -138,3 +138,56 @@
 }
 
 
+.home-page-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.home-logo {
+    width: 100px;
+    margin: 20px 0;
+}
+/*-----------*/
+/* Home Page */
+/*-----------*/
+.animal-sections-container {
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly around the items */
+    align-items: flex-start; /* Align items to the top */
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+    gap: 20px; /* Space between sections */
+    margin-top: 20px;
+}
+
+
+
+
+
+
+/* Appointment Page */
+
+.appointment-page-container {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly around the items */
+    align-items: flex-start; /* Align items to the top */
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+    gap: 20px; /* Space between sections */
+    margin-top: 20px;
+}
+
+
+/*profile page */
+
+
+.profile-page-container {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly around the items */
+    align-items: flex-start; /* Align items to the top */
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+    gap: 20px; /* Space between sections */
+    margin-top: 20px;
+}

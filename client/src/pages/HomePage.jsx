@@ -14,15 +14,16 @@ function HomePage({ user }) {
                 <h1>Hello{user ? `, ${user.userName}` : null}. Welcome to PetPal Hotel!</h1>
                 <img src={logo} alt="Logo" className="home-logo" />
             </header>
-            <section>
-                <AddAnimal />
-            </section>
-            <section>
-                <AnimalHome />
-            </section>
+            <div className="animal-sections-container">
+                <section className="add-animal-section">
+                    <AddAnimal />
+                </section>
+                <section className="animal-home-section">
+                    <AnimalHome />
+                </section>
+            </div>
         </div>
     );
 }
-
 
 export default HomePage;

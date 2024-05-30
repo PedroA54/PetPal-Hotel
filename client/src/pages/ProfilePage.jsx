@@ -11,15 +11,17 @@ function ProfilePage({user}) {
     return (
         <>
             <h1>This is the Profile Page</h1>
-            <section>
+            <div className="profile-page-container">
+            <section >
                 <AnimalsDetail />
             </section>
-            <section>
+            <section >
                 <BookingDetail />
             </section>
-            <section>
+            <section >
                 <AddAnimal />
             </section>
+            </div>
             
             
             
