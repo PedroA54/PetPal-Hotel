@@ -1,28 +1,47 @@
-# Setup 
+# PetPal Hotel
 
-## SERVER
-for back end 
 
-```
-pipenv install
-pipenv shell
-```
-From Termnal then run
-```
-python server/app.py
-```
-Check that your server serves the default route http://localhost:5555. You should see a web page with the heading "Project Server".
+## Table of Contents
 
-##  CLIENT
-for front end 
+- [Introduction](#introduction)
 
-To download the dependencies for the frontend client, from terminal run:
-```
-npm install --prefix client
-```
-```
-npm start --prefix client
-```
+- [Features](#features)
 
-Check that your the React client displays a default page http://localhost:3000
-You should see a web page with the heading "Project Client".
+- [How-To-Use](#How-To-Use)
+
+- [License](#license)
+
+- [Acknowledgments](#acknowledgments)
+
+
+## Introduction
+
+Welcome to PetPal Hotel – the ultimate destination for pampering your furry friends! 🐾
+
+At PetPal Hotel, we make it easy for you to take care of your pets. Just sign up, add your pets, and book apointments for their spa days with us. Give your pets the love they deserve at PetPal Hotel!
+
+
+
+
+
+
+
+## Features
+
+- Sign Up: Users can create a new account to access the PetPal Hotel platform.
+- Log In: Registered users can log in to their accounts to manage their pets and bookings.
+- Register Pets
+- Create Appointments: 
+- Update Pets & Delete Pets
+- Update Bookings & Delete Bookings
+
+
+## How To Use
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+- Special thanks to our contributors for their valuable input and contributions.
