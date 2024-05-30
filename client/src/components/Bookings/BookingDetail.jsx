@@ -126,7 +126,7 @@ function BookingDetail() {
                         </div>
                     ) : (
                         <div>
-                            <p><strong>Animal ID:</strong> {selectedBooking.animal_id}</p>
+                            <p><strong>Animal Name:</strong> {selectedBooking.animal_id}</p>
                             <p><strong>Package ID:</strong> {selectedBooking.package_id}</p>
                             <p><strong>Check-in Date:</strong> {selectedBooking.check_in_date}</p>
                             <p><strong>Check-out Date:</strong> {selectedBooking.check_out_date}</p>
