@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import CreateBooking from "../components/Bookings/BookingForm";
 import PackageDescription from "../components/Packages/PackageDetail";
 import { Redirect } from "react-router-dom";
+import logo from '../components/crocodile.png';  // Import the logo
 
 
 function AppointmentPage({ user }) {
@@ -10,11 +11,18 @@ function AppointmentPage({ user }) {
         return <Redirect to="/login" />
     }
     return (
-        <>
-            <h1>Make an Appointment</h1>
-            <CreateBooking />
-            <PackageDescription />
-        </>
+        <div className="appointment-page-container">
+            <header>
+                <img src={logo} alt="Logo" className="appointment-logo" /> 
+                <h1>Make an Appointment</h1>
+            </header>
+            <section>
+                <CreateBooking />
+            </section>
+            <section>
+                <PackageDescription />
+            </section>
+        </div>
     );
 }
 
