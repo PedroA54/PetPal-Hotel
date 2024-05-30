@@ -34,6 +34,36 @@ At PetPal Hotel, we make it easy for you to take care of your pets. Just sign up
 
 ## How To Use
 
+1. Sign Up
+
+- Create an account by providing the necessary details.
+
+2. Log In
+
+- Enter your credentials to log in to your account.
+
+3. Home Page
+
+-  After signing up, you will be directed to the home page.
+
+4. Register Your Animal
+
+- Go to the Add Animal form and Enter the details of your animal to register them into PetPal Hotel.
+
+5. Create a Booking
+
+- Choose a package for your animal and Fill in the correct check-in and check-out dates.
+
+6. Manage Your Profile
+
+- Go to your profile to view registered animals and bookings.
+- Edit or delete animal registrations and bookings as needed.
+
+7. Log Out
+
+- Click the "Log Out" button to sign out of your account.
+
+
 ## License
 
 This project is licensed under the MIT License.
