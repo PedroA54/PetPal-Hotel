@@ -1,5 +1,6 @@
-/* Animal */
-
+/*--------------------------*/
+/* Animal List Profile Page */
+/*--------------------------*/
 .animal-container {
     background-color: #ffc93c;
     padding: 20px;
@@ -21,7 +22,6 @@
 .animal-container h2 {
     margin-bottom: 20px;
 }
-
 
 
 .animal-container ul li {
@@ -121,6 +121,9 @@
 }
 
 
+/*-----------*/
+/* Home Page */
+/*-----------*/
 
 .home-page-container {
     text-align: center;
