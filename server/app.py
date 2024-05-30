@@ -37,7 +37,7 @@ class SignUp(Resource):
         password = data.get("password")
         try:
             user = Customer(userName=username)
-            user.password_hash = bcrypt.generate_password_hash(password).decode("utf-8")
+            user.password_hash = password
             db.session.add(user)
             db.session.commit()
             session["user_id"] = user.id
