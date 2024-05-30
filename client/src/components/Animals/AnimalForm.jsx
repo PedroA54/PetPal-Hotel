@@ -6,7 +6,9 @@ function AddAnimal() {
     const [species, setSpecies] = useState(''); // Initialize to empty string
     const [age, setAge] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const [photo, setPhoto] = useState(null);
     const history = useHistory();
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,6 +29,7 @@ function AddAnimal() {
                     name: name,
                     species: species,
                     age: age,
+                    photo: photo
                     
                 }),
             });
@@ -43,6 +46,7 @@ function AddAnimal() {
             setName('')
             setAge('')
             setSpecies('')
+            setPhoto('')
 
             // Navigate to the desired route after successful submission
             // history.push('/home');
@@ -88,6 +92,14 @@ function AddAnimal() {
                     min="1"
                     max="30"
                     required
+                />
+            </div>
+            <div>
+                <lable>Photo:</lable>
+                <input
+                type="string"
+                value={photo}
+                onChange={(e) => setPhoto(e.target.value)}
                 />
             </div>
             

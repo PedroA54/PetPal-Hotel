@@ -40,22 +40,22 @@ function AnimalsList() {
                 },
                 body: JSON.stringify(editedAnimal),
             })
-            .then(response => {
-                if (response.ok) {
-                    // Update the animal in the state
-                    setAnimals(prevAnimals => prevAnimals.map(animal =>
-                        animal.id === editedAnimal.id ? editedAnimal : animal
-                    ));
-                    setIsEditing(false); // Turn off editing mode
-                } else {
-                    console.error('Failed to update animal');
-                }
-                setIsSaving(false); // Reset isSaving state
-            })
-            .catch(error => {
-                console.error('Error updating animal:', error);
-                setIsSaving(false); // Reset isSaving state
-            });
+                .then(response => {
+                    if (response.ok) {
+                        // Update the animal in the state
+                        setAnimals(prevAnimals => prevAnimals.map(animal =>
+                            animal.id === editedAnimal.id ? editedAnimal : animal
+                        ));
+                        setIsEditing(false); // Turn off editing mode
+                    } else {
+                        console.error('Failed to update animal');
+                    }
+                    setIsSaving(false); // Reset isSaving state
+                })
+                .catch(error => {
+                    console.error('Error updating animal:', error);
+                    setIsSaving(false); // Reset isSaving state
+                });
         }
     }, [isSaving, editedAnimal]);
 
@@ -103,7 +103,7 @@ function AnimalsList() {
     if (!isLoggedIn) {
         return <p>You must be logged in to view this content.</p>;
     }
-
+    console.log(selectedAnimal)
     return (
         <div className="animal-container">
             <h2>Animals List</h2>
@@ -126,6 +126,7 @@ function AnimalsList() {
                             <p><strong>Name:</strong> <input type="text" name="name" value={editedAnimal.name} onChange={handleChange} /></p>
                             <p><strong>Species:</strong> <input type="text" name="species" value={editedAnimal.species} onChange={handleChange} /></p>
                             <p><strong>Age:</strong> <input type="text" name="age" value={editedAnimal.age} onChange={handleChange} /></p>
+                            <p><strong>Photo:</strong> <input type="text" name="photo" value={editedAnimal.photo_url} onChange={handleChange} /></p>
                             <button onClick={handleSave}>Save</button>
                             <button onClick={handleCancelEdit}>Cancel</button>
                         </div>
@@ -134,7 +135,7 @@ function AnimalsList() {
                             <p><strong>Name:</strong> {selectedAnimal.name}</p>
                             <p><strong>Species:</strong> {selectedAnimal.species}</p>
                             <p><strong>Age:</strong> {selectedAnimal.age}</p>
-                            
+                            <p><strong></strong><img className='animal-detail' src={selectedAnimal.photo_url} alt={selectedAnimal.name} style={{ maxWidth: '200px', maxHeight: '200px' }} /></p>
                             <button onClick={handleEdit}>Edit</button>
                             <button onClick={() => handleDelete(selectedAnimal.id)}>Delete</button>
                         </div>

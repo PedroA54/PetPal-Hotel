@@ -1,7 +1,8 @@
-from config import db
 from datetime import date
-from models import Animal, Booking, Package, Customer
+
 from app import app
+from config import db
+from models import Animal, Booking, Customer, Package
 
 if __name__ == "__main__":
     with app.app_context():
@@ -15,6 +16,7 @@ if __name__ == "__main__":
 
         db.session.add_all([u1, u2, u3, u4])
         db.session.commit()
+
 
         # Animals
         a1 = Animal(name="Max", age=5, species="Dog", customer_id=1)
@@ -94,4 +96,3 @@ if __name__ == "__main__":
         db.session.commit()
 
         print("Seeding finished.")
-
