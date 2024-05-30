@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import CreateBooking from "../components/Bookings/BookingForm";
 import PackageDescription from "../components/Packages/PackageDetail";
 import { Redirect } from "react-router-dom";
-import logo from '../components/crocodile.png';  // Import the logo
+import logo from '../photos/crocodile.png';  
 
 
 function AppointmentPage({ user }) {

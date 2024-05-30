@@ -10,7 +10,7 @@ import LogIn from '../components/Customers/LogIn';
 import './App.css';
 import './Form.css';
 import './NavBar.css';
-import logo from "../components/Nature.png";
+import logo from "../photos/Nature.png";
 
 function App() {
     const [user, setUser] = useState();

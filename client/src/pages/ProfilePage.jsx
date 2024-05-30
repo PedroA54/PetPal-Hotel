@@ -3,7 +3,7 @@ import AnimalsDetail from "../components/Animals/AnimalDetail";
 import AddAnimal from '../components/Animals/AnimalForm';
 import { Redirect } from "react-router-dom";
 import BookingDetail from "../components/Bookings/BookingDetail";
-import logo from '../components/flamingo.png';
+import logo from '../photos/flamingo.png';
 
 function ProfilePage({user}) {
     if (user === null){
