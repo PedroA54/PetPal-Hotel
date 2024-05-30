@@ -4,9 +4,10 @@ import AddAnimal from '../components/Animals/AnimalForm';
 import { Redirect } from "react-router-dom";
 import BookingDetail from "../components/Bookings/BookingDetail";
 import logo from '../photos/flamingo.png';
+import './ProfilePage.css'; // Import the CSS file
 
-function ProfilePage({user}) {
-    if (user === null){
+function ProfilePage({ user }) {
+    if (user === null) {
         return <Redirect to="/login" />
     }
     return (
@@ -15,12 +16,14 @@ function ProfilePage({user}) {
                 <h1>Your Profile</h1>
                 <img src={logo} alt="Logo" className="profile-logo" /> 
             </header>
-            <section>
-                <AnimalsDetail />
-            </section>
-            <section>
-                <BookingDetail />
-            </section>
+            <div className="details-row">
+                <section>
+                    <AnimalsDetail />
+                </section>
+                <section>
+                    <BookingDetail />
+                </section>
+            </div>
             <section>
                 <AddAnimal />
             </section>

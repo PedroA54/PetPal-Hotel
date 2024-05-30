@@ -1,0 +1,32 @@
+.appointment-page-container {
+    width: 100%;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.appointment-logo {
+    width: 50px;
+    height: auto;
+}
+
+.booking-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.booking-row section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.booking-row section:last-child {
+    margin-right: 0;
+}

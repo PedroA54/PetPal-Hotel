@@ -1,0 +1,32 @@
+.home-page-container {
+    width: 100%;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.home-logo {
+    width: 50px;
+    height: auto;
+}
+
+.animal-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.animal-row section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.animal-row section:last-child {
+    margin-right: 0;
+}
