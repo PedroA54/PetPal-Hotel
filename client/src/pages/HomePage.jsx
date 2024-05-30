@@ -1,5 +1,5 @@
 import React from "react";
-import logo from '../components/Fox.png';
+import logo from '../photos/Fox.png';
 import AddAnimal from '../components/Animals/AnimalForm';
 import AnimalHome from "../components/Animals/AnimalListHome";
 import { Redirect } from "react-router-dom";

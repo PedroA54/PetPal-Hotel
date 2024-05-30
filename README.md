@@ -22,10 +22,6 @@ At PetPal Hotel, we make it easy for you to take care of your pets. Just sign up
 
 
 
-
-
-
-
 ## Features
 
 - Sign Up: Users can create a new account to access the PetPal Hotel platform.

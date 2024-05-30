@@ -3,13 +3,12 @@ import { useHistory } from 'react-router-dom';
 
 function AddAnimal() {
     const [name, setName] = useState('');
-    const [species, setSpecies] = useState(''); // Initialize to empty string
+    const [species, setSpecies] = useState('');
     const [age, setAge] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
-    const [photo, setPhoto] = useState(null);
+    const [photo, setPhoto] = useState(''); // Initialize to empty string
     const history = useHistory();
     
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -30,7 +29,6 @@ function AddAnimal() {
                     species: species,
                     age: age,
                     photo: photo
-                    
                 }),
             });
 
@@ -43,10 +41,10 @@ function AddAnimal() {
 
             // Set the success message
             setSuccessMessage('Animal has been added to profile');
-            setName('')
-            setAge('')
-            setSpecies('')
-            setPhoto('')
+            setName('');
+            setAge('');
+            setSpecies('');
+            setPhoto('');
 
             // Navigate to the desired route after successful submission
             // history.push('/home');
@@ -74,7 +72,7 @@ function AddAnimal() {
                     onChange={(e) => setSpecies(e.target.value)}
                     required
                 >
-                    <option value="">Select Animal Type</option> {/* Default option */}
+                    <option value="">Select Animal Type</option>
                     <option value="Cat">Cat</option>
                     <option value="Dog">Dog</option>
                     <option value="Ferret">Ferret</option>
@@ -95,14 +93,13 @@ function AddAnimal() {
                 />
             </div>
             <div>
-                <lable>Photo:</lable>
+                <label>Photo:</label>
                 <input
-                type="string"
-                value={photo}
-                onChange={(e) => setPhoto(e.target.value)}
+                    type="text" // Changed to "text" to better reflect a URL or string path for the photo
+                    value={photo}
+                    onChange={(e) => setPhoto(e.target.value)}
                 />
             </div>
-            
             <button type="submit">Add Animal</button>
             {successMessage && <p>{successMessage}</p>}
         </form>
