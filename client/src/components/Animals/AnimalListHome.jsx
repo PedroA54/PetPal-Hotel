@@ -16,7 +16,7 @@ function AnimalHome() {
     };
 
     return (
-<div className="package-container">
+<div className="Animal-Home-container">
     <h2>Animals List</h2>
     {animals.length === 0 ? (
         <p>No animals available.</p>
