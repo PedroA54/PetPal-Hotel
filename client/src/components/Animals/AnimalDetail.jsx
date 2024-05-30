@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import './Animal.css';
 function AnimalsList() {
     const [animals, setAnimals] = useState([]);
     const [selectedAnimal, setSelectedAnimal] = useState(null);
@@ -104,7 +104,7 @@ function AnimalsList() {
     }
 
     return (
-        <div className="package-container">
+        <div className="animal-container">
             <h2>Animals List</h2>
             {animals.length === 0 ? (
                 <p>No animals available.</p>
@@ -118,7 +118,7 @@ function AnimalsList() {
                 </ul>
             )}
             {selectedAnimal && (
-                <div className="package-details">
+                <div className="animal-details">
                     <h2>Animal Details</h2>
                     {isEditing ? (
                         <div>

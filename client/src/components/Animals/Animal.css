@@ -1,6 +1,6 @@
 /* styling for animalList */
 
-.package-container {
+.animal-container {
     background-color: #ffc93c;
     padding: 20px;
     border-radius: 10px;
@@ -13,26 +13,26 @@
     align-items: center; /* Center horizontally */
 }
 
-.package-container h2 {
+.animal-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+.animal-container h2 {
     margin-bottom: 20px;
 }
 
-.package-container ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
 
-.package-container ul li {
+
+.animal-container ul li {
     margin-bottom: 10px;
 }
 
-.package-container ul li a {
+.animal-container ul li a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
 }
 
-.package-container ul li a:hover {
+.animal-container ul li a:hover {
     color: #666;
 }
