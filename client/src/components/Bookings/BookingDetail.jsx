@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../style.css';
 
 function BookingDetail() {
     const [bookings, setBookings] = useState([]);
@@ -86,7 +87,7 @@ function BookingDetail() {
     if (error) return <p>{error}</p>;
 
     return (
-        <div>
+        <div className="booking-container">
             <h2>Bookings List</h2>
             {bookings.length === 0 ? (
                 <p>No bookings available.</p>
@@ -100,7 +101,7 @@ function BookingDetail() {
                 </ul>
             )}
             {selectedBooking && (
-                <div>
+                <div className="booking-details">
                     <h2>Booking Details</h2>
                     {isEditing ? (
                         <div>

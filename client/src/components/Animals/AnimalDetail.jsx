@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../style.css';
 
 function AnimalsList() {
     const [animals, setAnimals] = useState([]);
@@ -104,7 +105,7 @@ function AnimalsList() {
     }
 
     return (
-        <div>
+        <div className="animal-container">
             <h2>Animals List</h2>
             {animals.length === 0 ? (
                 <p>No animals available.</p>
@@ -118,14 +119,13 @@ function AnimalsList() {
                 </ul>
             )}
             {selectedAnimal && (
-                <div>
-                <h2>Animal Details</h2>
+                <div className="animal-details">
+                    <h2>Animal Details</h2>
                     {isEditing ? (
                         <div>
                             <p><strong>Name:</strong> <input type="text" name="name" value={editedAnimal.name} onChange={handleChange} /></p>
                             <p><strong>Species:</strong> <input type="text" name="species" value={editedAnimal.species} onChange={handleChange} /></p>
                             <p><strong>Age:</strong> <input type="text" name="age" value={editedAnimal.age} onChange={handleChange} /></p>
-                            <p><strong>Customer ID:</strong> <input type="text" name="customer_id" value={editedAnimal.customer_id} onChange={handleChange} /></p>
                             <button onClick={handleSave}>Save</button>
                             <button onClick={handleCancelEdit}>Cancel</button>
                         </div>
@@ -134,7 +134,7 @@ function AnimalsList() {
                             <p><strong>Name:</strong> {selectedAnimal.name}</p>
                             <p><strong>Species:</strong> {selectedAnimal.species}</p>
                             <p><strong>Age:</strong> {selectedAnimal.age}</p>
-                            <p><strong>Customer ID:</strong> {selectedAnimal.customer_id}</p>
+                            
                             <button onClick={handleEdit}>Edit</button>
                             <button onClick={() => handleDelete(selectedAnimal.id)}>Delete</button>
                         </div>
@@ -146,4 +146,3 @@ function AnimalsList() {
 }
 
 export default AnimalsList;
-

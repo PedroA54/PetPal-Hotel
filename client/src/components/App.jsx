@@ -5,12 +5,12 @@ import HomePage from '../pages/HomePage';
 import EntryPage from '../pages/EntryPage';
 import AppointmentPage from '../pages/AppointmentPage';
 import ProfilePage from '../pages/ProfilePage';
-import AddAnimal from '../components/Animals/AnimalForm';
 import SignUp from '../components/Customers/SignUp';
 import LogIn from '../components/Customers/LogIn';
 import './App.css';
 import './Form.css';
 import './NavBar.css';
+
 
 function App() {
     const [user, setUser] = useState();
