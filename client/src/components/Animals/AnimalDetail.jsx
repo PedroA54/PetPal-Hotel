@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './Animal.css';
+import '../style.css';
+
 function AnimalsList() {
     const [animals, setAnimals] = useState([]);
     const [selectedAnimal, setSelectedAnimal] = useState(null);

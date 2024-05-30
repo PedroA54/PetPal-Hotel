@@ -1,7 +1,7 @@
 // PackageDetails.js
 
 import React, { useState, useEffect } from 'react';
-import './Package.css';
+import '../style.css';
 
 function PackageDetails() {
     const [packages, setPackages] = useState([]);
