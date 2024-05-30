@@ -1,5 +1,6 @@
-/* Styling for Booking Details */
-.package-container {
+/* styling for animalList */
+
+.booking-container {
     background-color: #ffc93c;
     padding: 20px;
     border-radius: 10px;
@@ -12,15 +13,26 @@
     align-items: center; /* Center horizontally */
 }
 
-.package-container ul {
-    list-style-type: none;
-    padding: 0;
+.booking-container h2 {
+    margin-bottom: 20px;
 }
 
-.package-container ul li {
+.booking-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.booking-container ul li {
     margin-bottom: 10px;
 }
 
-.package-details {
-    text-align: center; /* Center text within the package details */
+.booking-container ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.booking-container ul li a:hover {
+    color: #666;
 }
