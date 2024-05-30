@@ -6,7 +6,7 @@ body {
 body {
     font-family: Arial, sans-serif;
     background-image: url('../photos/Nature.png');
-    background-size: cover; /* This will make the image cover the entire background */
+    background-size: cover; 
     background-repeat: no-repeat; /* This prevents the image from repeating */
     background-position: center center; /* This positions the image in the center */
     background-attachment: fixed;
