@@ -24,7 +24,7 @@ function AnimalHome() {
         <ul>
             {animals.map(animal => (
                 <li key={animal.id}>
-                    <a href="#" onClick={() => handleAnimalClick(animal)}>{animal.name}</a>
+                    <a onClick={() => handleAnimalClick(animal)}>{animal.name}</a>
                 </li>
             ))}
         </ul>

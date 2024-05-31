@@ -9,7 +9,7 @@ function BookingDetail() {
     const [isSaving, setIsSaving] = useState(false);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    console.log(selectedBooking)
     useEffect(() => {
         fetch('/bookings')
             .then(response => response.json())
@@ -33,19 +33,19 @@ function BookingDetail() {
                 },
                 body: JSON.stringify(editedBooking),
             })
-            .then(response => response.ok ? response.json() : Promise.reject('Failed to update booking'))
-            .then(updatedBooking => {
-                setBookings(prevBookings => prevBookings.map(booking =>
-                    booking.id === updatedBooking.id ? updatedBooking : booking
-                ));
-                setIsEditing(false);
-                setIsSaving(false);
-            })
-            .catch(error => {
-                console.error('Error updating booking:', error);
-                setError('Failed to update booking.');
-                setIsSaving(false);
-            });
+                .then(response => response.ok ? response.json() : Promise.reject('Failed to update booking'))
+                .then(updatedBooking => {
+                    setBookings(prevBookings => prevBookings.map(booking =>
+                        booking.id === updatedBooking.id ? updatedBooking : booking
+                    ));
+                    setIsEditing(false);
+                    setIsSaving(false);
+                })
+                .catch(error => {
+                    console.error('Error updating booking:', error);
+                    setError('Failed to update booking.');
+                    setIsSaving(false);
+                });
         }
     }, [isSaving, editedBooking]);
 
@@ -95,7 +95,7 @@ function BookingDetail() {
                 <ul>
                     {bookings.map(booking => (
                         <li key={booking.id}>
-                            <a href="#" onClick={() => handleBookingClick(booking)}>Booking {booking.id}</a>
+                            <a href="#" onClick={() => handleBookingClick(booking)}>{booking.animal.name} - {booking.check_in_date}</a>
                         </li>
                     ))}
                 </ul>
@@ -126,8 +126,8 @@ function BookingDetail() {
                         </div>
                     ) : (
                         <div>
-                            <p><strong>Animal ID:</strong> {selectedBooking.animal_id}</p>
-                            <p><strong>Package ID:</strong> {selectedBooking.package_id}</p>
+                            <p><strong>Name:</strong> {selectedBooking.animal.name}</p>
+                            <p><strong>Package:</strong> {selectedBooking.package.name}</p>
                             <p><strong>Check-in Date:</strong> {selectedBooking.check_in_date}</p>
                             <p><strong>Check-out Date:</strong> {selectedBooking.check_out_date}</p>
                             <button onClick={handleEdit}>Edit</button>

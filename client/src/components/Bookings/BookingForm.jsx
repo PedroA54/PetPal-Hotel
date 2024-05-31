@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function CreateBooking() {
     const [checkInDate, setCheckInDate] = useState('');
@@ -6,6 +6,42 @@ function CreateBooking() {
     const [animalId, setAnimalId] = useState('');
     const [packageId, setPackageId] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const [animals, setAnimals] = useState([]);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await fetch('/check_session');
+                if (response.ok) {
+                    const userData = await response.json();
+                    setUser(userData);
+                }
+            } catch (error) {
+                console.error('Error fetching user:', error);
+            }
+        };
+
+        fetchUser();
+    }, []);
+
+    useEffect(() => {
+        const fetchAnimals = async () => {
+            if (user && user.id) {
+                try {
+                    const response = await fetch('/animals');
+                    if (response.ok) {
+                        const data = await response.json();
+                        setAnimals(data);
+                    }
+                } catch (error) {
+                    console.error('Error fetching animals:', error);
+                }
+            }
+        };
+
+        fetchAnimals();
+    }, [user]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,7 +66,7 @@ function CreateBooking() {
             const newBooking = await response.json();
             console.log('Booking created:', newBooking);
 
-             // Set the success message
+            // Set the success message
             setSuccessMessage('Booking Successfully Created');
 
             // Reset the form fields
@@ -48,12 +84,18 @@ function CreateBooking() {
             <h2>Create Booking</h2>
             <div>
                 <label>Animal Name:</label>
-                <input
-                    type="number"
+                <select
                     value={animalId}
                     onChange={(e) => setAnimalId(e.target.value)}
                     required
-                />
+                >
+                    <option value="">Select an animal</option>
+                    {animals.map((animal) => (
+                        <option key={animal.id} value={animal.id}>
+                            {animal.name}
+                        </option>
+                    ))}
+                </select>
             </div>
             <div>
                 <label>Package Type:</label>

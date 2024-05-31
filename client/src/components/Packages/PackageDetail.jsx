@@ -45,6 +45,5 @@ function PackageDetails() {
 }
 
 export default PackageDetails;
-
 //testing
 //Testing

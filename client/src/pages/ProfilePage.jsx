@@ -13,7 +13,7 @@ function ProfilePage({ user }) {
     return (
         <div className="profile-page-container">
             <header>
-                <h1>Your Profile</h1>
+            <h1>{user ? `${user.userName}'s Profile` : 'Profile'}</h1>
                 <img src={logo} alt="Logo" className="profile-logo" /> 
             </header>
             <div className="details-row">

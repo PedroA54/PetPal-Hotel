@@ -43,12 +43,22 @@
 /*------------*/
 .Animal-Home-container {
     background-color: #ffc93c;
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(125, 89, 89, 0.1);
     max-width: 400px;
     margin: 40px 0;
     float: left;
+}
+.welcome-paragraph {
+    background-color: #5dabad;
+    padding: 20px;
+    border-radius: 100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 40px auto;
+    margin-left: 20px;
+    margin-top:20px; 
 }
 
 /*---------------------*/
@@ -98,13 +108,17 @@
 /* Package Details*/
 /*----------------*/
 .package-container {
-    background-color: #ffc93c;
+    background-color: #5dabad;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 200px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    max-width: 500px;
     margin: 40px 0;
     float: left;
+    color:aliceblue
+}
+.package-details {
+    color: white; /* Change text color to white */
 }
 
 .package-container ul {
