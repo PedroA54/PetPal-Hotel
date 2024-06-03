@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import NavBar from './NavBar';
-import HomePage from '../pages/HomePage';
-import EntryPage from '../pages/EntryPage';
 import AppointmentPage from '../pages/AppointmentPage';
-import ProfilePage from '../pages/ProfilePage';
 import SignUp from '../components/Customers/SignUp';
 import LogIn from '../components/Customers/LogIn';
-import './App.css';
+import ProfilePage from '../pages/ProfilePage';
+import EntryPage from '../pages/EntryPage';
+import HomePage from '../pages/HomePage';
+import NavBar from './NavBar';
 import './NavBar.css';
+import './App.css';
 
 
 function App() {

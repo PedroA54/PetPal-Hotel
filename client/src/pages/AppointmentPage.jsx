@@ -1,9 +1,10 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import CreateBooking from "../components/Bookings/BookingForm";
 import PackageDescription from "../components/Packages/PackageDetail";
+import CreateBooking from "../components/Bookings/BookingForm";
 import logo from '../photos/crocodile.png';
 import './AppointmentPage.css';
+
 
 function AppointmentPage({ user }) {
     if (user === null) {

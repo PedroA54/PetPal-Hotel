@@ -1,10 +1,11 @@
 import React from "react";
-import AnimalsDetail from "../components/Animals/AnimalDetail";
-import AddAnimal from '../components/Animals/AnimalForm';
 import { Redirect } from "react-router-dom";
 import BookingDetail from "../components/Bookings/BookingDetail";
+import AnimalsDetail from "../components/Animals/AnimalDetail";
+import AddAnimal from '../components/Animals/AnimalForm';
 import logo from '../photos/flamingo.png';
-import './ProfilePage.css'; // Import the CSS file
+import './ProfilePage.css'; 
+
 
 function ProfilePage({ user }) {
     if (user === null) {

@@ -1,9 +1,10 @@
 import React from "react";
-import logo from '../photos/Fox.png';
-import AddAnimal from '../components/Animals/AnimalForm';
-import AnimalHome from "../components/Animals/AnimalListHome";
 import { Redirect } from "react-router-dom";
-import './HomePage.css'; // Import the CSS file
+import AnimalHome from "../components/Animals/AnimalListHome";
+import AddAnimal from '../components/Animals/AnimalForm';
+import logo from '../photos/Fox.png';
+import './HomePage.css'; 
+
 
 function HomePage({ user }) {
     if (user === null) {

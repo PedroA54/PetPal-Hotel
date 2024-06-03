@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import LogIn from '../components/Customers/LogIn';
 import LogOut from '../components/Customers/LogOut';
 
+
 function EntryPage() {
     return (
         <>
