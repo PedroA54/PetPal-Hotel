@@ -9,7 +9,7 @@ import HomePage from '../pages/HomePage';
 import NavBar from './NavBar';
 import './NavBar.css';
 import './App.css';
-
+import Footer from '../components/Footer'
 
 function App() {
     const [user, setUser] = useState();
@@ -70,8 +70,10 @@ function App() {
                         <LogIn onLogin={handleLogin} user={user} setUser={setUser} />
                     </Route>
                 </Switch>
+                <Footer />
             </div>
         </Router>
+        
     );
 }
 
