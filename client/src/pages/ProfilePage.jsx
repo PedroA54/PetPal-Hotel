@@ -12,10 +12,12 @@ function ProfilePage({ user }) {
     }
     return (
         <div className="profile-page-container">
-            <header>
-            <h1>{user ? `${user.userName}'s Profile` : 'Profile'}</h1>
-                <img src={logo} alt="Logo" className="profile-logo" /> 
-            </header>
+            <div className="profile-header-container">
+                <header>
+                    <h1 className="profile-header">{user ? `${user.userName}'s Profile` : 'Profile'}</h1>
+                    <img src={logo} alt="Logo" className="profile-logo" /> 
+                </header>
+            </div>
             <div className="details-row">
                 <section>
                     <AnimalsDetail />

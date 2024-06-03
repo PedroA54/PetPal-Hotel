@@ -122,3 +122,26 @@ header {
     color: #666;
 }
 
+
+
+.profile-header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+
+.profile-header {
+    font-size: 2em;
+    margin: 0;
+    color: black;
+}
