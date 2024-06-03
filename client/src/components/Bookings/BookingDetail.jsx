@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '../style.css';
+import '../../pages/AppointmentPage';
+
 
 function BookingDetail() {
     const [bookings, setBookings] = useState([]);
