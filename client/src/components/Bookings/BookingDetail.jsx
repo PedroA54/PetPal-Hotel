@@ -106,12 +106,12 @@ function BookingDetail() {
                     {isEditing ? (
                         <div>
                             <p>
-                                <strong>Animal ID:</strong>
-                                <input type="text" name="animal_id" value={editedBooking.animal_id} onChange={handleChange} />
+                                <strong>Animal :</strong>
+                                <input type="text" name="name" value={editedBooking.animal.name} onChange={handleChange} />
                             </p>
                             <p>
-                                <strong>Package ID:</strong>
-                                <input type="text" name="package_id" value={editedBooking.package_id} onChange={handleChange} />
+                                <strong>Package :</strong>
+                                <input type="text" name="package" value={editedBooking.package_id} onChange={handleChange} />
                             </p>
                             <p>
                                 <strong>Check-in Date:</strong>
@@ -141,3 +141,4 @@ function BookingDetail() {
 }
 
 export default BookingDetail;
+

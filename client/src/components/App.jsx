@@ -8,7 +8,6 @@ import ProfilePage from '../pages/ProfilePage';
 import SignUp from '../components/Customers/SignUp';
 import LogIn from '../components/Customers/LogIn';
 import './App.css';
-import './Form.css';
 import './NavBar.css';
 
 
