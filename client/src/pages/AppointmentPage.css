@@ -6,6 +6,16 @@
 .appointment-page-container {
     width: 100%;
     padding: 20px;
+    height: 100vh;
+    text-align: center;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 
 header {
@@ -18,6 +28,12 @@ header {
 .appointment-logo {
     width: 50px;
     height: auto;
+}
+
+.appointment-header {
+    font-size: 2em;
+    margin: 0;
+    color: black;
 }
 
 .booking-row {
@@ -36,11 +52,6 @@ header {
     margin-right: 0;
 }
 
-.appointment-page-container {
-    text-align: center;
-}
-
-/* Logo for Appointment-Page*/
 .appointment-logo {
     width: 100px; 
     height: auto;
@@ -49,21 +60,20 @@ header {
     right: 10px;
 }
 
-
-/* Package Details Appointment-Page*/
-
+/* Package Details Appointment-Page */
 .package-container {
     background-color: #5dabad;
     padding: 20px;
-    border-radius: 200px;
+    border-radius: 20px; /* Adjusted from 200px for a more typical border radius */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 500px;
     margin: 40px 0;
-    float: left;
-    color:aliceblue
+    color: aliceblue;
 }
+
 .package-details {
     color: white; 
+    text-align: center;
 }
 
 .package-container ul {
@@ -73,8 +83,4 @@ header {
 
 .package-container ul li {
     margin-bottom: 10px;
-}
-
-.package-details {
-    text-align: center;
 }
