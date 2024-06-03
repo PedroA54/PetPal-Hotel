@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
+
 function SignUp({ user, setUser }) {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');

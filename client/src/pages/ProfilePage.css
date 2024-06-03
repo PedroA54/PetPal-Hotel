@@ -1,6 +1,14 @@
+
+/*---------------*/
+/* Profile Page */
+/*-------------*/
 .profile-page-container {
     width: 100%;
     padding: 20px;
+}
+
+.profile-page-container {
+    text-align: center;
 }
 
 header {
@@ -8,11 +16,6 @@ header {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
-}
-
-.profile-logo {
-    width: 50px;
-    height: auto;
 }
 
 .details-row {
@@ -29,4 +32,116 @@ header {
 
 .details-row section:last-child {
     margin-right: 0;
+}
+
+/* Logo for Profile-Page */
+
+.profile-logo {
+    width: 80px; 
+    height: auto;
+    position: absolute;
+    top: 15px; 
+    right: 10px;
+}
+
+
+/* Animal List Profile-Page */
+
+.animal-container {
+    background-color: #ffc93c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 40px auto 40px 40px; /* Adjusted margin to shift left */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+}
+
+.animal-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+.animal-container h2 {
+    margin-bottom: 20px;
+}
+
+
+.animal-container ul li {
+    margin-bottom: 10px;
+}
+
+.animal-container ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.animal-container ul li a:hover {
+    color: #666;
+}
+
+/* Booking List Profile-Page */
+
+.booking-container {
+    background-color: #ffc93c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.booking-container h2 {
+    margin-bottom: 20px;
+}
+
+.booking-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.booking-container ul li {
+    margin-bottom: 10px;
+}
+
+.booking-container ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.booking-container ul li a:hover {
+    color: #666;
+}
+
+
+
+.profile-header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+
+.profile-header {
+    font-size: 2em;
+    margin: 0;
+    color: black;
 }

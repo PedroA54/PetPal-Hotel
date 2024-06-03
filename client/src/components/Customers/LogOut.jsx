@@ -1,7 +1,7 @@
-
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+
 
 function LogOut({ setUser }) {
     const [loggedOut, setLoggedOut] = useState(false);

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+
 function CreateBooking() {
     const [checkInDate, setCheckInDate] = useState('');
     const [checkOutDate, setCheckOutDate] = useState('');

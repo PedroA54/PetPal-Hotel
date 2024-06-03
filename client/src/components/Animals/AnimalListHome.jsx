@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
+
 function AnimalHome() {
     const [animals, setAnimals] = useState([]);
-    const [selectedAnimal, setSelectedAnimal] = useState(null);
+    const [ SelectedAnimal, setSelectedAnimal] = useState(null);
 
     useEffect(() => {
         fetch('/animals')
