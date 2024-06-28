@@ -61,6 +61,7 @@ function AddAnimal() {
                 <label>Name:</label>
                 <input
                     type="text"
+                    placeholder='Name'
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
@@ -86,6 +87,7 @@ function AddAnimal() {
                 <label>Age:</label>
                 <input
                     type="number"
+                    placeholder='Age'
                     value={age}
                     onChange={(e) => setAge(e.target.value)}
                     min="1"
@@ -96,7 +98,8 @@ function AddAnimal() {
             <div>
                 <label>Photo:</label>
                 <input
-                    type="text" // Changed to "text" to better reflect a URL or string path for the photo
+                    type="text" 
+                    placeholder='Insert Photo URL'
                     value={photo}
                     onChange={(e) => setPhoto(e.target.value)}
                 />
