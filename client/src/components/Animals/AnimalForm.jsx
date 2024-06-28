@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+
 
 
 function AddAnimal() {
@@ -8,7 +8,6 @@ function AddAnimal() {
     const [age, setAge] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [photo, setPhoto] = useState(''); // Initialize to empty string
-    const history = useHistory();
     
     const handleSubmit = async (e) => {
         e.preventDefault();
