@@ -5,11 +5,12 @@ import SignUp from '../components/Customers/SignUp';
 import LogIn from '../components/Customers/LogIn';
 import ProfilePage from '../pages/ProfilePage';
 import EntryPage from '../pages/EntryPage';
+import Footer from '../components/Footer'
 import HomePage from '../pages/HomePage';
 import NavBar from './NavBar';
 import './NavBar.css';
 import './App.css';
-import Footer from '../components/Footer'
+
 
 function App() {
     const [user, setUser] = useState();

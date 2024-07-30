@@ -80,3 +80,20 @@ form button {
     width: 100%;
     padding: 10px;
 }
+
+
+/* Footer */
+
+.footer {
+    text-align: center;  /* Center text horizontally */
+    padding: 20px;       /* Add some padding */
+}
+
+.footer a {
+    color:  #ffc93c; /* Optional: Add link color */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Optional: Add underline on hover */
+}
